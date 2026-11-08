@@ -1,0 +1,3831 @@
+{
+  "schema": "op4-historical-profile-attribution-v3",
+  "source_batch_relative_to_repository": "../Load-5090/logs/5090/phase6/op3-combined-v2-1x-50steps-20261102-100813-883313",
+  "source_report_sha256": "4924c3833c8580370d67d212d0e3837432d6efce014762cd8e0ded5a82c24fed",
+  "units": {
+    "kernel_ms": "milliseconds per profiled optimizer step",
+    "median_call_us": "microseconds per collective kernel"
+  },
+  "method": "Group kernel events by collective, CPU launch owner, message size and dtype; sum each rank before taking the eight-rank median. Temporal overlap is the intersection with the union of all non-NCCL GPU kernel intervals on that rank. Launch grid and block dimensions are copied from each kernel event and counted within its attributed group.",
+  "limitations": [
+    "Source OP3 profiles, not an OP4 measurement; source arms are recorded explicitly.",
+    "Kernel durations may include waiting for other ranks and profiler overhead.",
+    "Exposed means no simultaneous non-NCCL GPU kernel, not a causal critical-path proof.",
+    "Do not sum group medians to reconstruct formal step time or a predicted speedup.",
+    "All ranks and all collectives are retained, including startup and outliers.",
+    "NCCL kernel entry-point names do not establish the actual algorithm or protocol: NCCL 2.27 can dispatch different algorithms/protocols through the same specialized entry.",
+    "Grid dimensions establish launched CTAs, not communicator channel capacity or per-message ring topology. No LL-to-Simple transition is inferred from these traces."
+  ],
+  "arms": {
+    "op3-combined": {
+      "ranks": [
+        {
+          "rank": 0,
+          "trace": "results/profile-op3-combined/rank0-profile.json.gz",
+          "sha256": "3b5ae7b859fcce82547e493271bfbe4d78b5f8f3a79b237b0bbd65138fbf4f0d",
+          "groups": [
+            {
+              "kernel": "ncclDevKernel_AllGather_RING_LL",
+              "collective": "AllGather",
+              "owner": "ConsumerGemmRSFunctionBackward",
+              "input_elements": 1048576,
+              "output_elements": 8388608,
+              "dtype": "BFloat16",
+              "calls": 256,
+              "streams": [
+                7
+              ],
+              "launch_geometries": [
+                {
+                  "grid": [
+                    4,
+                    1,
+                    1
+                  ],
+                  "block": [
+                    544,
+                    1,
+                    1
+                  ],
+                  "calls": 256
+                }
+              ],
+              "kernel_ms": 165.46788899999999,
+              "non_nccl_kernel_overlap_ms": 0.0,
+              "exposed_ms": 165.46788899999999,
+              "median_call_us": 455.647,
+              "minimum_call_us": 428.671,
+              "maximum_call_us": 2297.563
+            },
+            {
+              "kernel": "ncclDevKernel_AllGather_RING_LL",
+              "collective": "AllGather",
+              "owner": "LinearWithGradAccumulationAndAsyncCommunication",
+              "input_elements": 1048576,
+              "output_elements": 8388608,
+              "dtype": "BFloat16",
+              "calls": 4,
+              "streams": [
+                7
+              ],
+              "launch_geometries": [
+                {
+                  "grid": [
+                    4,
+                    1,
+                    1
+                  ],
+                  "block": [
+                    544,
+                    1,
+                    1
+                  ],
+                  "calls": 4
+                }
+              ],
+              "kernel_ms": 3.02953,
+              "non_nccl_kernel_overlap_ms": 0.0,
+              "exposed_ms": 3.02953,
+              "median_call_us": 757.4705,
+              "minimum_call_us": 671.711,
+              "maximum_call_us": 842.878
+            },
+            {
+              "kernel": "ncclDevKernel_AllGather_RING_LL",
+              "collective": "AllGather",
+              "owner": "LinearWithGradAccumulationAndAsyncCommunicationBackward",
+              "input_elements": 1048576,
+              "output_elements": 8388608,
+              "dtype": "BFloat16",
+              "calls": 4,
+              "streams": [
+                35
+              ],
+              "launch_geometries": [
+                {
+                  "grid": [
+                    4,
+                    1,
+                    1
+                  ],
+                  "block": [
+                    544,
+                    1,
+                    1
+                  ],
+                  "calls": 4
+                }
+              ],
+              "kernel_ms": 16.63555,
+              "non_nccl_kernel_overlap_ms": 1.5354208984375,
+              "exposed_ms": 15.1001291015625,
+              "median_call_us": 4115.7355,
+              "minimum_call_us": 3927.736,
+              "maximum_call_us": 4476.343
+            },
+            {
+              "kernel": "ncclDevKernel_AllGather_RING_LL",
+              "collective": "AllGather",
+              "owner": "_MA8CachedRawLinear",
+              "input_elements": 1048576,
+              "output_elements": 8388608,
+              "dtype": "BFloat16",
+              "calls": 256,
+              "streams": [
+                7
+              ],
+              "launch_geometries": [
+                {
+                  "grid": [
+                    4,
+                    1,
+                    1
+                  ],
+                  "block": [
+                    544,
+                    1,
+                    1
+                  ],
+                  "calls": 256
+                }
+              ],
+              "kernel_ms": 225.17832599999994,
+              "non_nccl_kernel_overlap_ms": 0.0,
+              "exposed_ms": 225.17832599999994,
+              "median_call_us": 843.278,
+              "minimum_call_us": 429.951,
+              "maximum_call_us": 2524.987
+            },
+            {
+              "kernel": "ncclDevKernel_AllGather_RING_LL",
+              "collective": "AllGather",
+              "owner": "_ScatterToSequenceParallelRegionBackward",
+              "input_elements": 1048576,
+              "output_elements": 8388608,
+              "dtype": "BFloat16",
+              "calls": 4,
+              "streams": [
+                7
+              ],
+              "launch_geometries": [
+                {
+                  "grid": [
+                    4,
+                    1,
+                    1
+                  ],
+                  "block": [
+                    544,
+                    1,
+                    1
+                  ],
+                  "calls": 4
+                }
+              ],
+              "kernel_ms": 1.785531,
+              "non_nccl_kernel_overlap_ms": 0.0,
+              "exposed_ms": 1.785531,
+              "median_call_us": 449.471,
+              "minimum_call_us": 433.31,
+              "maximum_call_us": 453.279
+            },
+            {
+              "kernel": "ncclDevKernel_AllReduce_Sum_bf16_RING_LL",
+              "collective": "AllReduce",
+              "owner": "_ReduceFromModelParallelRegion",
+              "input_elements": 8388608,
+              "output_elements": 8388608,
+              "dtype": "BFloat16",
+              "calls": 4,
+              "streams": [
+                7
+              ],
+              "launch_geometries": [
+                {
+                  "grid": [
+                    4,
+                    1,
+                    1
+                  ],
+                  "block": [
+                    544,
+                    1,
+                    1
+                  ],
+                  "calls": 4
+                }
+              ],
+              "kernel_ms": 16.708125,
+              "non_nccl_kernel_overlap_ms": 0.0,
+              "exposed_ms": 16.708125,
+              "median_call_us": 943.9505,
+              "minimum_call_us": 933.405,
+              "maximum_call_us": 13886.819
+            },
+            {
+              "kernel": "ncclDevKernel_AllReduce_Sum_f32_RING_LL",
+              "collective": "AllReduce",
+              "owner": "_VocabParallelCrossEntropy",
+              "input_elements": 2048,
+              "output_elements": 2048,
+              "dtype": "Float",
+              "calls": 12,
+              "streams": [
+                7
+              ],
+              "launch_geometries": [
+                {
+                  "grid": [
+                    1,
+                    1,
+                    1
+                  ],
+                  "block": [
+                    128,
+                    1,
+                    1
+                  ],
+                  "calls": 12
+                }
+              ],
+              "kernel_ms": 1.2495640000000001,
+              "non_nccl_kernel_overlap_ms": 0.0,
+              "exposed_ms": 1.2495640000000001,
+              "median_call_us": 43.536,
+              "minimum_call_us": 21.92,
+              "maximum_call_us": 273.823
+            },
+            {
+              "kernel": "ncclDevKernel_AllReduce_Sum_f32_RING_LL",
+              "collective": "AllReduce",
+              "owner": "outside-target-autograd",
+              "input_elements": 1,
+              "output_elements": 1,
+              "dtype": "Float",
+              "calls": 2,
+              "streams": [
+                7
+              ],
+              "launch_geometries": [
+                {
+                  "grid": [
+                    1,
+                    1,
+                    1
+                  ],
+                  "block": [
+                    128,
+                    1,
+                    1
+                  ],
+                  "calls": 2
+                }
+              ],
+              "kernel_ms": 15.317121,
+              "non_nccl_kernel_overlap_ms": 0.0,
+              "exposed_ms": 15.317121,
+              "median_call_us": 7658.5605000000005,
+              "minimum_call_us": 425.439,
+              "maximum_call_us": 14891.682
+            },
+            {
+              "kernel": "ncclDevKernel_AllReduce_Sum_f32_RING_LL",
+              "collective": "AllReduce",
+              "owner": "outside-target-autograd",
+              "input_elements": 794624,
+              "output_elements": 794624,
+              "dtype": "Float",
+              "calls": 1,
+              "streams": [
+                7
+              ],
+              "launch_geometries": [
+                {
+                  "grid": [
+                    4,
+                    1,
+                    1
+                  ],
+                  "block": [
+                    544,
+                    1,
+                    1
+                  ],
+                  "calls": 1
+                }
+              ],
+              "kernel_ms": 1.941596,
+              "non_nccl_kernel_overlap_ms": 0.0,
+              "exposed_ms": 1.941596,
+              "median_call_us": 1941.596,
+              "minimum_call_us": 1941.596,
+              "maximum_call_us": 1941.596
+            },
+            {
+              "kernel": "ncclDevKernel_ReduceScatter_Sum_bf16_RING_LL",
+              "collective": "ReduceScatter",
+              "owner": "LinearWithGradAccumulationAndAsyncCommunicationBackward",
+              "input_elements": 8388608,
+              "output_elements": 1048576,
+              "dtype": "BFloat16",
+              "calls": 4,
+              "streams": [
+                35
+              ],
+              "launch_geometries": [
+                {
+                  "grid": [
+                    4,
+                    1,
+                    1
+                  ],
+                  "block": [
+                    544,
+                    1,
+                    1
+                  ],
+                  "calls": 4
+                }
+              ],
+              "kernel_ms": 3.114619,
+              "non_nccl_kernel_overlap_ms": 1.52022119140625,
+              "exposed_ms": 1.5943978085937502,
+              "median_call_us": 786.319,
+              "minimum_call_us": 734.975,
+              "maximum_call_us": 807.006
+            },
+            {
+              "kernel": "ncclDevKernel_ReduceScatter_Sum_bf16_RING_LL",
+              "collective": "ReduceScatter",
+              "owner": "_MA8CachedRawLinearBackward",
+              "input_elements": 8388608,
+              "output_elements": 1048576,
+              "dtype": "BFloat16",
+              "calls": 256,
+              "streams": [
+                35
+              ],
+              "launch_geometries": [
+                {
+                  "grid": [
+                    4,
+                    1,
+                    1
+                  ],
+                  "block": [
+                    544,
+                    1,
+                    1
+                  ],
+                  "calls": 256
+                }
+              ],
+              "kernel_ms": 217.95615899999999,
+              "non_nccl_kernel_overlap_ms": 49.30939697265625,
+              "exposed_ms": 168.64676202734373,
+              "median_call_us": 708.9100000000001,
+              "minimum_call_us": 641.535,
+              "maximum_call_us": 2321.147
+            },
+            {
+              "kernel": "ncclDevKernel_SendRecv",
+              "collective": "SendRecv",
+              "owner": "ConsumerGemmRSFunction",
+              "input_elements": 7798784,
+              "output_elements": 7798784,
+              "dtype": "Byte",
+              "calls": 256,
+              "streams": [
+                35
+              ],
+              "launch_geometries": [
+                {
+                  "grid": [
+                    4,
+                    1,
+                    1
+                  ],
+                  "block": [
+                    640,
+                    1,
+                    1
+                  ],
+                  "calls": 256
+                }
+              ],
+              "kernel_ms": 196.07447899999997,
+              "non_nccl_kernel_overlap_ms": 0.0,
+              "exposed_ms": 196.07447899999997,
+              "median_call_us": 615.1669999999999,
+              "minimum_call_us": 317.888,
+              "maximum_call_us": 4255.703
+            }
+          ]
+        },
+        {
+          "rank": 1,
+          "trace": "results/profile-op3-combined/rank1-profile.json.gz",
+          "sha256": "1c5fa718fd626864e36f802305739daab3112671ffc69125c2e8088ee885c9fc",
+          "groups": [
+            {
+              "kernel": "ncclDevKernel_AllGather_RING_LL",
+              "collective": "AllGather",
+              "owner": "ConsumerGemmRSFunctionBackward",
+              "input_elements": 1048576,
+              "output_elements": 8388608,
+              "dtype": "BFloat16",
+              "calls": 256,
+              "streams": [
+                7
+              ],
+              "launch_geometries": [
+                {
+                  "grid": [
+                    4,
+                    1,
+                    1
+                  ],
+                  "block": [
+                    544,
+                    1,
+                    1
+                  ],
+                  "calls": 256
+                }
+              ],
+              "kernel_ms": 166.49209700000006,
+              "non_nccl_kernel_overlap_ms": 0.0,
+              "exposed_ms": 166.49209700000006,
+              "median_call_us": 459.375,
+              "minimum_call_us": 431.487,
+              "maximum_call_us": 2300.413
+            },
+            {
+              "kernel": "ncclDevKernel_AllGather_RING_LL",
+              "collective": "AllGather",
+              "owner": "LinearWithGradAccumulationAndAsyncCommunication",
+              "input_elements": 1048576,
+              "output_elements": 8388608,
+              "dtype": "BFloat16",
+              "calls": 4,
+              "streams": [
+                7
+              ],
+              "launch_geometries": [
+                {
+                  "grid": [
+                    4,
+                    1,
+                    1
+                  ],
+                  "block": [
+                    544,
+                    1,
+                    1
+                  ],
+                  "calls": 4
+                }
+              ],
+              "kernel_ms": 2.9435789999999997,
+              "non_nccl_kernel_overlap_ms": 0.0,
+              "exposed_ms": 2.9435789999999997,
+              "median_call_us": 735.1345,
+              "minimum_call_us": 684.447,
+              "maximum_call_us": 788.863
+            },
+            {
+              "kernel": "ncclDevKernel_AllGather_RING_LL",
+              "collective": "AllGather",
+              "owner": "LinearWithGradAccumulationAndAsyncCommunicationBackward",
+              "input_elements": 1048576,
+              "output_elements": 8388608,
+              "dtype": "BFloat16",
+              "calls": 4,
+              "streams": [
+                35
+              ],
+              "launch_geometries": [
+                {
+                  "grid": [
+                    4,
+                    1,
+                    1
+                  ],
+                  "block": [
+                    544,
+                    1,
+                    1
+                  ],
+                  "calls": 4
+                }
+              ],
+              "kernel_ms": 16.584837,
+              "non_nccl_kernel_overlap_ms": 1.545052734375,
+              "exposed_ms": 15.039784265625002,
+              "median_call_us": 4091.3055000000004,
+              "minimum_call_us": 3907.737,
+              "maximum_call_us": 4494.489
+            },
+            {
+              "kernel": "ncclDevKernel_AllGather_RING_LL",
+              "collective": "AllGather",
+              "owner": "_MA8CachedRawLinear",
+              "input_elements": 1048576,
+              "output_elements": 8388608,
+              "dtype": "BFloat16",
+              "calls": 256,
+              "streams": [
+                7
+              ],
+              "launch_geometries": [
+                {
+                  "grid": [
+                    4,
+                    1,
+                    1
+                  ],
+                  "block": [
+                    544,
+                    1,
+                    1
+                  ],
+                  "calls": 256
+                }
+              ],
+              "kernel_ms": 224.195611,
+              "non_nccl_kernel_overlap_ms": 0.0,
+              "exposed_ms": 224.195611,
+              "median_call_us": 859.8705,
+              "minimum_call_us": 432.736,
+              "maximum_call_us": 2575.004
+            },
+            {
+              "kernel": "ncclDevKernel_AllGather_RING_LL",
+              "collective": "AllGather",
+              "owner": "_ScatterToSequenceParallelRegionBackward",
+              "input_elements": 1048576,
+              "output_elements": 8388608,
+              "dtype": "BFloat16",
+              "calls": 4,
+              "streams": [
+                7
+              ],
+              "launch_geometries": [
+                {
+                  "grid": [
+                    4,
+                    1,
+                    1
+                  ],
+                  "block": [
+                    544,
+                    1,
+                    1
+                  ],
+                  "calls": 4
+                }
+              ],
+              "kernel_ms": 1.8013409999999999,
+              "non_nccl_kernel_overlap_ms": 0.0,
+              "exposed_ms": 1.8013409999999999,
+              "median_call_us": 449.45550000000003,
+              "minimum_call_us": 445.695,
+              "maximum_call_us": 456.735
+            },
+            {
+              "kernel": "ncclDevKernel_AllReduce_Sum_bf16_RING_LL",
+              "collective": "AllReduce",
+              "owner": "_ReduceFromModelParallelRegion",
+              "input_elements": 8388608,
+              "output_elements": 8388608,
+              "dtype": "BFloat16",
+              "calls": 4,
+              "streams": [
+                7
+              ],
+              "launch_geometries": [
+                {
+                  "grid": [
+                    4,
+                    1,
+                    1
+                  ],
+                  "block": [
+                    544,
+                    1,
+                    1
+                  ],
+                  "calls": 4
+                }
+              ],
+              "kernel_ms": 21.156316999999998,
+              "non_nccl_kernel_overlap_ms": 0.0,
+              "exposed_ms": 21.156316999999998,
+              "median_call_us": 942.7025,
+              "minimum_call_us": 936.83,
+              "maximum_call_us": 18334.082
+            },
+            {
+              "kernel": "ncclDevKernel_AllReduce_Sum_f32_RING_LL",
+              "collective": "AllReduce",
+              "owner": "_VocabParallelCrossEntropy",
+              "input_elements": 2048,
+              "output_elements": 2048,
+              "dtype": "Float",
+              "calls": 12,
+              "streams": [
+                7
+              ],
+              "launch_geometries": [
+                {
+                  "grid": [
+                    1,
+                    1,
+                    1
+                  ],
+                  "block": [
+                    128,
+                    1,
+                    1
+                  ],
+                  "calls": 12
+                }
+              ],
+              "kernel_ms": 1.297822,
+              "non_nccl_kernel_overlap_ms": 0.0,
+              "exposed_ms": 1.297822,
+              "median_call_us": 43.424,
+              "minimum_call_us": 22.945,
+              "maximum_call_us": 300.799
+            },
+            {
+              "kernel": "ncclDevKernel_AllReduce_Sum_f32_RING_LL",
+              "collective": "AllReduce",
+              "owner": "outside-target-autograd",
+              "input_elements": 1,
+              "output_elements": 1,
+              "dtype": "Float",
+              "calls": 2,
+              "streams": [
+                7
+              ],
+              "launch_geometries": [
+                {
+                  "grid": [
+                    1,
+                    1,
+                    1
+                  ],
+                  "block": [
+                    128,
+                    1,
+                    1
+                  ],
+                  "calls": 2
+                }
+              ],
+              "kernel_ms": 18.705411,
+              "non_nccl_kernel_overlap_ms": 0.0,
+              "exposed_ms": 18.705411,
+              "median_call_us": 9352.7055,
+              "minimum_call_us": 3428.923,
+              "maximum_call_us": 15276.488
+            },
+            {
+              "kernel": "ncclDevKernel_AllReduce_Sum_f32_RING_LL",
+              "collective": "AllReduce",
+              "owner": "outside-target-autograd",
+              "input_elements": 794624,
+              "output_elements": 794624,
+              "dtype": "Float",
+              "calls": 1,
+              "streams": [
+                7
+              ],
+              "launch_geometries": [
+                {
+                  "grid": [
+                    4,
+                    1,
+                    1
+                  ],
+                  "block": [
+                    544,
+                    1,
+                    1
+                  ],
+                  "calls": 1
+                }
+              ],
+              "kernel_ms": 1.940414,
+              "non_nccl_kernel_overlap_ms": 0.0,
+              "exposed_ms": 1.940414,
+              "median_call_us": 1940.414,
+              "minimum_call_us": 1940.414,
+              "maximum_call_us": 1940.414
+            },
+            {
+              "kernel": "ncclDevKernel_ReduceScatter_Sum_bf16_RING_LL",
+              "collective": "ReduceScatter",
+              "owner": "LinearWithGradAccumulationAndAsyncCommunicationBackward",
+              "input_elements": 8388608,
+              "output_elements": 1048576,
+              "dtype": "BFloat16",
+              "calls": 4,
+              "streams": [
+                35
+              ],
+              "launch_geometries": [
+                {
+                  "grid": [
+                    4,
+                    1,
+                    1
+                  ],
+                  "block": [
+                    544,
+                    1,
+                    1
+                  ],
+                  "calls": 4
+                }
+              ],
+              "kernel_ms": 3.1137240000000004,
+              "non_nccl_kernel_overlap_ms": 1.5294052734375,
+              "exposed_ms": 1.5843187265625,
+              "median_call_us": 786.815,
+              "minimum_call_us": 734.783,
+              "maximum_call_us": 805.311
+            },
+            {
+              "kernel": "ncclDevKernel_ReduceScatter_Sum_bf16_RING_LL",
+              "collective": "ReduceScatter",
+              "owner": "_MA8CachedRawLinearBackward",
+              "input_elements": 8388608,
+              "output_elements": 1048576,
+              "dtype": "BFloat16",
+              "calls": 256,
+              "streams": [
+                35
+              ],
+              "launch_geometries": [
+                {
+                  "grid": [
+                    4,
+                    1,
+                    1
+                  ],
+                  "block": [
+                    544,
+                    1,
+                    1
+                  ],
+                  "calls": 256
+                }
+              ],
+              "kernel_ms": 216.1105259999999,
+              "non_nccl_kernel_overlap_ms": 49.678765625,
+              "exposed_ms": 166.43176037499995,
+              "median_call_us": 702.2225,
+              "minimum_call_us": 631.903,
+              "maximum_call_us": 2313.98
+            },
+            {
+              "kernel": "ncclDevKernel_SendRecv",
+              "collective": "SendRecv",
+              "owner": "ConsumerGemmRSFunction",
+              "input_elements": 7798784,
+              "output_elements": 7798784,
+              "dtype": "Byte",
+              "calls": 256,
+              "streams": [
+                35
+              ],
+              "launch_geometries": [
+                {
+                  "grid": [
+                    4,
+                    1,
+                    1
+                  ],
+                  "block": [
+                    640,
+                    1,
+                    1
+                  ],
+                  "calls": 256
+                }
+              ],
+              "kernel_ms": 196.44303999999997,
+              "non_nccl_kernel_overlap_ms": 0.0,
+              "exposed_ms": 196.44303999999997,
+              "median_call_us": 600.895,
+              "minimum_call_us": 367.967,
+              "maximum_call_us": 4199.353
+            }
+          ]
+        },
+        {
+          "rank": 2,
+          "trace": "results/profile-op3-combined/rank2-profile.json.gz",
+          "sha256": "e540d54b0b51dcba35723767128caa8cfb38c50d81d6d0263c302292df3b735c",
+          "groups": [
+            {
+              "kernel": "ncclDevKernel_AllGather_RING_LL",
+              "collective": "AllGather",
+              "owner": "ConsumerGemmRSFunctionBackward",
+              "input_elements": 1048576,
+              "output_elements": 8388608,
+              "dtype": "BFloat16",
+              "calls": 256,
+              "streams": [
+                7
+              ],
+              "launch_geometries": [
+                {
+                  "grid": [
+                    4,
+                    1,
+                    1
+                  ],
+                  "block": [
+                    544,
+                    1,
+                    1
+                  ],
+                  "calls": 256
+                }
+              ],
+              "kernel_ms": 146.14334600000004,
+              "non_nccl_kernel_overlap_ms": 0.0,
+              "exposed_ms": 146.14334600000004,
+              "median_call_us": 438.1555,
+              "minimum_call_us": 420.027,
+              "maximum_call_us": 1967.084
+            },
+            {
+              "kernel": "ncclDevKernel_AllGather_RING_LL",
+              "collective": "AllGather",
+              "owner": "LinearWithGradAccumulationAndAsyncCommunication",
+              "input_elements": 1048576,
+              "output_elements": 8388608,
+              "dtype": "BFloat16",
+              "calls": 4,
+              "streams": [
+                7
+              ],
+              "launch_geometries": [
+                {
+                  "grid": [
+                    4,
+                    1,
+                    1
+                  ],
+                  "block": [
+                    544,
+                    1,
+                    1
+                  ],
+                  "calls": 4
+                }
+              ],
+              "kernel_ms": 2.5680370000000003,
+              "non_nccl_kernel_overlap_ms": 0.0,
+              "exposed_ms": 2.5680370000000003,
+              "median_call_us": 693.4485,
+              "minimum_call_us": 421.82,
+              "maximum_call_us": 759.32
+            },
+            {
+              "kernel": "ncclDevKernel_AllGather_RING_LL",
+              "collective": "AllGather",
+              "owner": "LinearWithGradAccumulationAndAsyncCommunicationBackward",
+              "input_elements": 1048576,
+              "output_elements": 8388608,
+              "dtype": "BFloat16",
+              "calls": 4,
+              "streams": [
+                35
+              ],
+              "launch_geometries": [
+                {
+                  "grid": [
+                    4,
+                    1,
+                    1
+                  ],
+                  "block": [
+                    544,
+                    1,
+                    1
+                  ],
+                  "calls": 4
+                }
+              ],
+              "kernel_ms": 10.395188999999998,
+              "non_nccl_kernel_overlap_ms": 1.842380859375,
+              "exposed_ms": 8.552808140624999,
+              "median_call_us": 2908.8179999999998,
+              "minimum_call_us": 420.508,
+              "maximum_call_us": 4157.045
+            },
+            {
+              "kernel": "ncclDevKernel_AllGather_RING_LL",
+              "collective": "AllGather",
+              "owner": "_MA8CachedRawLinear",
+              "input_elements": 1048576,
+              "output_elements": 8388608,
+              "dtype": "BFloat16",
+              "calls": 256,
+              "streams": [
+                7
+              ],
+              "launch_geometries": [
+                {
+                  "grid": [
+                    4,
+                    1,
+                    1
+                  ],
+                  "block": [
+                    544,
+                    1,
+                    1
+                  ],
+                  "calls": 256
+                }
+              ],
+              "kernel_ms": 186.60551700000002,
+              "non_nccl_kernel_overlap_ms": 0.0,
+              "exposed_ms": 186.60551700000002,
+              "median_call_us": 719.625,
+              "minimum_call_us": 420.06,
+              "maximum_call_us": 1408.305
+            },
+            {
+              "kernel": "ncclDevKernel_AllGather_RING_LL",
+              "collective": "AllGather",
+              "owner": "_ScatterToSequenceParallelRegionBackward",
+              "input_elements": 1048576,
+              "output_elements": 8388608,
+              "dtype": "BFloat16",
+              "calls": 4,
+              "streams": [
+                7
+              ],
+              "launch_geometries": [
+                {
+                  "grid": [
+                    4,
+                    1,
+                    1
+                  ],
+                  "block": [
+                    544,
+                    1,
+                    1
+                  ],
+                  "calls": 4
+                }
+              ],
+              "kernel_ms": 1.7356310000000004,
+              "non_nccl_kernel_overlap_ms": 0.0,
+              "exposed_ms": 1.7356310000000004,
+              "median_call_us": 431.5475,
+              "minimum_call_us": 427.804,
+              "maximum_call_us": 444.732
+            },
+            {
+              "kernel": "ncclDevKernel_AllReduce_Sum_bf16_RING_LL",
+              "collective": "AllReduce",
+              "owner": "_ReduceFromModelParallelRegion",
+              "input_elements": 8388608,
+              "output_elements": 8388608,
+              "dtype": "BFloat16",
+              "calls": 4,
+              "streams": [
+                7
+              ],
+              "launch_geometries": [
+                {
+                  "grid": [
+                    4,
+                    1,
+                    1
+                  ],
+                  "block": [
+                    544,
+                    1,
+                    1
+                  ],
+                  "calls": 4
+                }
+              ],
+              "kernel_ms": 31.350458999999997,
+              "non_nccl_kernel_overlap_ms": 0.0,
+              "exposed_ms": 31.350458999999997,
+              "median_call_us": 831.5915,
+              "minimum_call_us": 829.783,
+              "maximum_call_us": 28857.493
+            },
+            {
+              "kernel": "ncclDevKernel_AllReduce_Sum_f32_RING_LL",
+              "collective": "AllReduce",
+              "owner": "_VocabParallelCrossEntropy",
+              "input_elements": 2048,
+              "output_elements": 2048,
+              "dtype": "Float",
+              "calls": 12,
+              "streams": [
+                7
+              ],
+              "launch_geometries": [
+                {
+                  "grid": [
+                    1,
+                    1,
+                    1
+                  ],
+                  "block": [
+                    128,
+                    1,
+                    1
+                  ],
+                  "calls": 12
+                }
+              ],
+              "kernel_ms": 0.47500600000000004,
+              "non_nccl_kernel_overlap_ms": 0.0,
+              "exposed_ms": 0.47500600000000004,
+              "median_call_us": 25.008000000000003,
+              "minimum_call_us": 22.624,
+              "maximum_call_us": 97.503
+            },
+            {
+              "kernel": "ncclDevKernel_AllReduce_Sum_f32_RING_LL",
+              "collective": "AllReduce",
+              "owner": "outside-target-autograd",
+              "input_elements": 1,
+              "output_elements": 1,
+              "dtype": "Float",
+              "calls": 2,
+              "streams": [
+                7
+              ],
+              "launch_geometries": [
+                {
+                  "grid": [
+                    1,
+                    1,
+                    1
+                  ],
+                  "block": [
+                    128,
+                    1,
+                    1
+                  ],
+                  "calls": 2
+                }
+              ],
+              "kernel_ms": 0.03440000000000001,
+              "non_nccl_kernel_overlap_ms": 0.0,
+              "exposed_ms": 0.03440000000000001,
+              "median_call_us": 17.200000000000003,
+              "minimum_call_us": 17.056,
+              "maximum_call_us": 17.344
+            },
+            {
+              "kernel": "ncclDevKernel_AllReduce_Sum_f32_RING_LL",
+              "collective": "AllReduce",
+              "owner": "outside-target-autograd",
+              "input_elements": 794624,
+              "output_elements": 794624,
+              "dtype": "Float",
+              "calls": 1,
+              "streams": [
+                7
+              ],
+              "launch_geometries": [
+                {
+                  "grid": [
+                    4,
+                    1,
+                    1
+                  ],
+                  "block": [
+                    544,
+                    1,
+                    1
+                  ],
+                  "calls": 1
+                }
+              ],
+              "kernel_ms": 0.239774,
+              "non_nccl_kernel_overlap_ms": 0.0,
+              "exposed_ms": 0.239774,
+              "median_call_us": 239.774,
+              "minimum_call_us": 239.774,
+              "maximum_call_us": 239.774
+            },
+            {
+              "kernel": "ncclDevKernel_ReduceScatter_Sum_bf16_RING_LL",
+              "collective": "ReduceScatter",
+              "owner": "LinearWithGradAccumulationAndAsyncCommunicationBackward",
+              "input_elements": 8388608,
+              "output_elements": 1048576,
+              "dtype": "BFloat16",
+              "calls": 4,
+              "streams": [
+                35
+              ],
+              "launch_geometries": [
+                {
+                  "grid": [
+                    4,
+                    1,
+                    1
+                  ],
+                  "block": [
+                    544,
+                    1,
+                    1
+                  ],
+                  "calls": 4
+                }
+              ],
+              "kernel_ms": 2.7034279999999997,
+              "non_nccl_kernel_overlap_ms": 2.050216796875,
+              "exposed_ms": 0.6532112031250001,
+              "median_call_us": 754.456,
+              "minimum_call_us": 419.196,
+              "maximum_call_us": 775.32
+            },
+            {
+              "kernel": "ncclDevKernel_ReduceScatter_Sum_bf16_RING_LL",
+              "collective": "ReduceScatter",
+              "owner": "_MA8CachedRawLinearBackward",
+              "input_elements": 8388608,
+              "output_elements": 1048576,
+              "dtype": "BFloat16",
+              "calls": 256,
+              "streams": [
+                35
+              ],
+              "launch_geometries": [
+                {
+                  "grid": [
+                    4,
+                    1,
+                    1
+                  ],
+                  "block": [
+                    544,
+                    1,
+                    1
+                  ],
+                  "calls": 256
+                }
+              ],
+              "kernel_ms": 142.55353799999997,
+              "non_nccl_kernel_overlap_ms": 70.74669677734374,
+              "exposed_ms": 71.80684122265622,
+              "median_call_us": 438.716,
+              "minimum_call_us": 415.996,
+              "maximum_call_us": 2089.034
+            },
+            {
+              "kernel": "ncclDevKernel_SendRecv",
+              "collective": "SendRecv",
+              "owner": "ConsumerGemmRSFunction",
+              "input_elements": 7798784,
+              "output_elements": 7798784,
+              "dtype": "Byte",
+              "calls": 256,
+              "streams": [
+                35
+              ],
+              "launch_geometries": [
+                {
+                  "grid": [
+                    4,
+                    1,
+                    1
+                  ],
+                  "block": [
+                    640,
+                    1,
+                    1
+                  ],
+                  "calls": 256
+                }
+              ],
+              "kernel_ms": 133.59822599999995,
+              "non_nccl_kernel_overlap_ms": 0.0,
+              "exposed_ms": 133.59822599999995,
+              "median_call_us": 301.3405,
+              "minimum_call_us": 253.726,
+              "maximum_call_us": 1851.405
+            }
+          ]
+        },
+        {
+          "rank": 3,
+          "trace": "results/profile-op3-combined/rank3-profile.json.gz",
+          "sha256": "7efe88900f5b5dcedd4baed4c27b18e7a012f587e68afa8200b47deac7caff41",
+          "groups": [
+            {
+              "kernel": "ncclDevKernel_AllGather_RING_LL",
+              "collective": "AllGather",
+              "owner": "ConsumerGemmRSFunctionBackward",
+              "input_elements": 1048576,
+              "output_elements": 8388608,
+              "dtype": "BFloat16",
+              "calls": 256,
+              "streams": [
+                7
+              ],
+              "launch_geometries": [
+                {
+                  "grid": [
+                    4,
+                    1,
+                    1
+                  ],
+                  "block": [
+                    544,
+                    1,
+                    1
+                  ],
+                  "calls": 256
+                }
+              ],
+              "kernel_ms": 161.92865100000012,
+              "non_nccl_kernel_overlap_ms": 0.0,
+              "exposed_ms": 161.92865100000012,
+              "median_call_us": 443.6775,
+              "minimum_call_us": 425.022,
+              "maximum_call_us": 2274.003
+            },
+            {
+              "kernel": "ncclDevKernel_AllGather_RING_LL",
+              "collective": "AllGather",
+              "owner": "LinearWithGradAccumulationAndAsyncCommunication",
+              "input_elements": 1048576,
+              "output_elements": 8388608,
+              "dtype": "BFloat16",
+              "calls": 4,
+              "streams": [
+                7
+              ],
+              "launch_geometries": [
+                {
+                  "grid": [
+                    4,
+                    1,
+                    1
+                  ],
+                  "block": [
+                    544,
+                    1,
+                    1
+                  ],
+                  "calls": 4
+                }
+              ],
+              "kernel_ms": 2.782384,
+              "non_nccl_kernel_overlap_ms": 0.0,
+              "exposed_ms": 2.782384,
+              "median_call_us": 690.156,
+              "minimum_call_us": 637.213,
+              "maximum_call_us": 764.859
+            },
+            {
+              "kernel": "ncclDevKernel_AllGather_RING_LL",
+              "collective": "AllGather",
+              "owner": "LinearWithGradAccumulationAndAsyncCommunicationBackward",
+              "input_elements": 1048576,
+              "output_elements": 8388608,
+              "dtype": "BFloat16",
+              "calls": 4,
+              "streams": [
+                35
+              ],
+              "launch_geometries": [
+                {
+                  "grid": [
+                    4,
+                    1,
+                    1
+                  ],
+                  "block": [
+                    544,
+                    1,
+                    1
+                  ],
+                  "calls": 4
+                }
+              ],
+              "kernel_ms": 16.508611000000002,
+              "non_nccl_kernel_overlap_ms": 2.20504443359375,
+              "exposed_ms": 14.30356656640625,
+              "median_call_us": 4107.385,
+              "minimum_call_us": 3822.186,
+              "maximum_call_us": 4471.655
+            },
+            {
+              "kernel": "ncclDevKernel_AllGather_RING_LL",
+              "collective": "AllGather",
+              "owner": "_MA8CachedRawLinear",
+              "input_elements": 1048576,
+              "output_elements": 8388608,
+              "dtype": "BFloat16",
+              "calls": 256,
+              "streams": [
+                7
+              ],
+              "launch_geometries": [
+                {
+                  "grid": [
+                    4,
+                    1,
+                    1
+                  ],
+                  "block": [
+                    544,
+                    1,
+                    1
+                  ],
+                  "calls": 256
+                }
+              ],
+              "kernel_ms": 219.2861989999999,
+              "non_nccl_kernel_overlap_ms": 0.0,
+              "exposed_ms": 219.2861989999999,
+              "median_call_us": 824.1075000000001,
+              "minimum_call_us": 423.934,
+              "maximum_call_us": 2581.298
+            },
+            {
+              "kernel": "ncclDevKernel_AllGather_RING_LL",
+              "collective": "AllGather",
+              "owner": "_ScatterToSequenceParallelRegionBackward",
+              "input_elements": 1048576,
+              "output_elements": 8388608,
+              "dtype": "BFloat16",
+              "calls": 4,
+              "streams": [
+                7
+              ],
+              "launch_geometries": [
+                {
+                  "grid": [
+                    4,
+                    1,
+                    1
+                  ],
+                  "block": [
+                    544,
+                    1,
+                    1
+                  ],
+                  "calls": 4
+                }
+              ],
+              "kernel_ms": 1.746456,
+              "non_nccl_kernel_overlap_ms": 0.0,
+              "exposed_ms": 1.746456,
+              "median_call_us": 435.198,
+              "minimum_call_us": 429.886,
+              "maximum_call_us": 446.174
+            },
+            {
+              "kernel": "ncclDevKernel_AllReduce_Sum_bf16_RING_LL",
+              "collective": "AllReduce",
+              "owner": "_ReduceFromModelParallelRegion",
+              "input_elements": 8388608,
+              "output_elements": 8388608,
+              "dtype": "BFloat16",
+              "calls": 4,
+              "streams": [
+                7
+              ],
+              "launch_geometries": [
+                {
+                  "grid": [
+                    4,
+                    1,
+                    1
+                  ],
+                  "block": [
+                    544,
+                    1,
+                    1
+                  ],
+                  "calls": 4
+                }
+              ],
+              "kernel_ms": 34.717053,
+              "non_nccl_kernel_overlap_ms": 0.0,
+              "exposed_ms": 34.717053,
+              "median_call_us": 829.051,
+              "minimum_call_us": 823.931,
+              "maximum_call_us": 32235.02
+            },
+            {
+              "kernel": "ncclDevKernel_AllReduce_Sum_f32_RING_LL",
+              "collective": "AllReduce",
+              "owner": "_VocabParallelCrossEntropy",
+              "input_elements": 2048,
+              "output_elements": 2048,
+              "dtype": "Float",
+              "calls": 12,
+              "streams": [
+                7
+              ],
+              "launch_geometries": [
+                {
+                  "grid": [
+                    1,
+                    1,
+                    1
+                  ],
+                  "block": [
+                    128,
+                    1,
+                    1
+                  ],
+                  "calls": 12
+                }
+              ],
+              "kernel_ms": 0.449277,
+              "non_nccl_kernel_overlap_ms": 0.0,
+              "exposed_ms": 0.449277,
+              "median_call_us": 23.423499999999997,
+              "minimum_call_us": 21.471,
+              "maximum_call_us": 95.424
+            },
+            {
+              "kernel": "ncclDevKernel_AllReduce_Sum_f32_RING_LL",
+              "collective": "AllReduce",
+              "owner": "outside-target-autograd",
+              "input_elements": 1,
+              "output_elements": 1,
+              "dtype": "Float",
+              "calls": 2,
+              "streams": [
+                7
+              ],
+              "launch_geometries": [
+                {
+                  "grid": [
+                    1,
+                    1,
+                    1
+                  ],
+                  "block": [
+                    128,
+                    1,
+                    1
+                  ],
+                  "calls": 2
+                }
+              ],
+              "kernel_ms": 19.990831999999997,
+              "non_nccl_kernel_overlap_ms": 0.0,
+              "exposed_ms": 19.990831999999997,
+              "median_call_us": 9995.416,
+              "minimum_call_us": 5205.603,
+              "maximum_call_us": 14785.229
+            },
+            {
+              "kernel": "ncclDevKernel_AllReduce_Sum_f32_RING_LL",
+              "collective": "AllReduce",
+              "owner": "outside-target-autograd",
+              "input_elements": 794624,
+              "output_elements": 794624,
+              "dtype": "Float",
+              "calls": 1,
+              "streams": [
+                7
+              ],
+              "launch_geometries": [
+                {
+                  "grid": [
+                    4,
+                    1,
+                    1
+                  ],
+                  "block": [
+                    544,
+                    1,
+                    1
+                  ],
+                  "calls": 1
+                }
+              ],
+              "kernel_ms": 1.813622,
+              "non_nccl_kernel_overlap_ms": 0.0,
+              "exposed_ms": 1.813622,
+              "median_call_us": 1813.622,
+              "minimum_call_us": 1813.622,
+              "maximum_call_us": 1813.622
+            },
+            {
+              "kernel": "ncclDevKernel_ReduceScatter_Sum_bf16_RING_LL",
+              "collective": "ReduceScatter",
+              "owner": "LinearWithGradAccumulationAndAsyncCommunicationBackward",
+              "input_elements": 8388608,
+              "output_elements": 1048576,
+              "dtype": "BFloat16",
+              "calls": 4,
+              "streams": [
+                35
+              ],
+              "launch_geometries": [
+                {
+                  "grid": [
+                    4,
+                    1,
+                    1
+                  ],
+                  "block": [
+                    544,
+                    1,
+                    1
+                  ],
+                  "calls": 4
+                }
+              ],
+              "kernel_ms": 3.0940299999999996,
+              "non_nccl_kernel_overlap_ms": 2.19694775390625,
+              "exposed_ms": 0.8970822460937499,
+              "median_call_us": 773.4514999999999,
+              "minimum_call_us": 734.555,
+              "maximum_call_us": 812.572
+            },
+            {
+              "kernel": "ncclDevKernel_ReduceScatter_Sum_bf16_RING_LL",
+              "collective": "ReduceScatter",
+              "owner": "_MA8CachedRawLinearBackward",
+              "input_elements": 8388608,
+              "output_elements": 1048576,
+              "dtype": "BFloat16",
+              "calls": 256,
+              "streams": [
+                35
+              ],
+              "launch_geometries": [
+                {
+                  "grid": [
+                    4,
+                    1,
+                    1
+                  ],
+                  "block": [
+                    544,
+                    1,
+                    1
+                  ],
+                  "calls": 256
+                }
+              ],
+              "kernel_ms": 154.893845,
+              "non_nccl_kernel_overlap_ms": 70.9720771484375,
+              "exposed_ms": 83.92176785156258,
+              "median_call_us": 439.8695,
+              "minimum_call_us": 422.718,
+              "maximum_call_us": 2093.428
+            },
+            {
+              "kernel": "ncclDevKernel_SendRecv",
+              "collective": "SendRecv",
+              "owner": "ConsumerGemmRSFunction",
+              "input_elements": 7798784,
+              "output_elements": 7798784,
+              "dtype": "Byte",
+              "calls": 256,
+              "streams": [
+                35
+              ],
+              "launch_geometries": [
+                {
+                  "grid": [
+                    4,
+                    1,
+                    1
+                  ],
+                  "block": [
+                    640,
+                    1,
+                    1
+                  ],
+                  "calls": 256
+                }
+              ],
+              "kernel_ms": 156.279375,
+              "non_nccl_kernel_overlap_ms": 0.0,
+              "exposed_ms": 156.279375,
+              "median_call_us": 424.51,
+              "minimum_call_us": 259.903,
+              "maximum_call_us": 4021.002
+            }
+          ]
+        },
+        {
+          "rank": 4,
+          "trace": "results/profile-op3-combined/rank4-profile.json.gz",
+          "sha256": "1ff592309d890d5fdeeebf62b3709596716eacbd6a3822373dc9ddecf38fcd5d",
+          "groups": [
+            {
+              "kernel": "ncclDevKernel_AllGather_RING_LL",
+              "collective": "AllGather",
+              "owner": "ConsumerGemmRSFunctionBackward",
+              "input_elements": 1048576,
+              "output_elements": 8388608,
+              "dtype": "BFloat16",
+              "calls": 256,
+              "streams": [
+                7
+              ],
+              "launch_geometries": [
+                {
+                  "grid": [
+                    4,
+                    1,
+                    1
+                  ],
+                  "block": [
+                    544,
+                    1,
+                    1
+                  ],
+                  "calls": 256
+                }
+              ],
+              "kernel_ms": 162.4169179999999,
+              "non_nccl_kernel_overlap_ms": 0.0,
+              "exposed_ms": 162.4169179999999,
+              "median_call_us": 443.8395,
+              "minimum_call_us": 430.399,
+              "maximum_call_us": 2279.197
+            },
+            {
+              "kernel": "ncclDevKernel_AllGather_RING_LL",
+              "collective": "AllGather",
+              "owner": "LinearWithGradAccumulationAndAsyncCommunication",
+              "input_elements": 1048576,
+              "output_elements": 8388608,
+              "dtype": "BFloat16",
+              "calls": 4,
+              "streams": [
+                7
+              ],
+              "launch_geometries": [
+                {
+                  "grid": [
+                    4,
+                    1,
+                    1
+                  ],
+                  "block": [
+                    544,
+                    1,
+                    1
+                  ],
+                  "calls": 4
+                }
+              ],
+              "kernel_ms": 2.8307149999999996,
+              "non_nccl_kernel_overlap_ms": 0.0,
+              "exposed_ms": 2.8307149999999996,
+              "median_call_us": 709.8705,
+              "minimum_call_us": 628.511,
+              "maximum_call_us": 782.463
+            },
+            {
+              "kernel": "ncclDevKernel_AllGather_RING_LL",
+              "collective": "AllGather",
+              "owner": "LinearWithGradAccumulationAndAsyncCommunicationBackward",
+              "input_elements": 1048576,
+              "output_elements": 8388608,
+              "dtype": "BFloat16",
+              "calls": 4,
+              "streams": [
+                35
+              ],
+              "launch_geometries": [
+                {
+                  "grid": [
+                    4,
+                    1,
+                    1
+                  ],
+                  "block": [
+                    544,
+                    1,
+                    1
+                  ],
+                  "calls": 4
+                }
+              ],
+              "kernel_ms": 16.571559,
+              "non_nccl_kernel_overlap_ms": 2.20271826171875,
+              "exposed_ms": 14.368840738281252,
+              "median_call_us": 4134.09,
+              "minimum_call_us": 3841.69,
+              "maximum_call_us": 4461.689
+            },
+            {
+              "kernel": "ncclDevKernel_AllGather_RING_LL",
+              "collective": "AllGather",
+              "owner": "_MA8CachedRawLinear",
+              "input_elements": 1048576,
+              "output_elements": 8388608,
+              "dtype": "BFloat16",
+              "calls": 256,
+              "streams": [
+                7
+              ],
+              "launch_geometries": [
+                {
+                  "grid": [
+                    4,
+                    1,
+                    1
+                  ],
+                  "block": [
+                    544,
+                    1,
+                    1
+                  ],
+                  "calls": 256
+                }
+              ],
+              "kernel_ms": 226.52586500000012,
+              "non_nccl_kernel_overlap_ms": 0.0,
+              "exposed_ms": 226.52586500000012,
+              "median_call_us": 861.6469999999999,
+              "minimum_call_us": 434.624,
+              "maximum_call_us": 2592.252
+            },
+            {
+              "kernel": "ncclDevKernel_AllGather_RING_LL",
+              "collective": "AllGather",
+              "owner": "_ScatterToSequenceParallelRegionBackward",
+              "input_elements": 1048576,
+              "output_elements": 8388608,
+              "dtype": "BFloat16",
+              "calls": 4,
+              "streams": [
+                7
+              ],
+              "launch_geometries": [
+                {
+                  "grid": [
+                    4,
+                    1,
+                    1
+                  ],
+                  "block": [
+                    544,
+                    1,
+                    1
+                  ],
+                  "calls": 4
+                }
+              ],
+              "kernel_ms": 1.756607,
+              "non_nccl_kernel_overlap_ms": 0.0,
+              "exposed_ms": 1.756607,
+              "median_call_us": 440.192,
+              "minimum_call_us": 432.255,
+              "maximum_call_us": 443.968
+            },
+            {
+              "kernel": "ncclDevKernel_AllReduce_Sum_bf16_RING_LL",
+              "collective": "AllReduce",
+              "owner": "_ReduceFromModelParallelRegion",
+              "input_elements": 8388608,
+              "output_elements": 8388608,
+              "dtype": "BFloat16",
+              "calls": 4,
+              "streams": [
+                7
+              ],
+              "launch_geometries": [
+                {
+                  "grid": [
+                    4,
+                    1,
+                    1
+                  ],
+                  "block": [
+                    544,
+                    1,
+                    1
+                  ],
+                  "calls": 4
+                }
+              ],
+              "kernel_ms": 31.313934999999997,
+              "non_nccl_kernel_overlap_ms": 0.0,
+              "exposed_ms": 31.313934999999997,
+              "median_call_us": 823.7585,
+              "minimum_call_us": 820.959,
+              "maximum_call_us": 28845.459
+            },
+            {
+              "kernel": "ncclDevKernel_AllReduce_Sum_f32_RING_LL",
+              "collective": "AllReduce",
+              "owner": "_VocabParallelCrossEntropy",
+              "input_elements": 2048,
+              "output_elements": 2048,
+              "dtype": "Float",
+              "calls": 12,
+              "streams": [
+                7
+              ],
+              "launch_geometries": [
+                {
+                  "grid": [
+                    1,
+                    1,
+                    1
+                  ],
+                  "block": [
+                    128,
+                    1,
+                    1
+                  ],
+                  "calls": 12
+                }
+              ],
+              "kernel_ms": 0.368766,
+              "non_nccl_kernel_overlap_ms": 0.0,
+              "exposed_ms": 0.368766,
+              "median_call_us": 22.784,
+              "minimum_call_us": 21.76,
+              "maximum_call_us": 73.216
+            },
+            {
+              "kernel": "ncclDevKernel_AllReduce_Sum_f32_RING_LL",
+              "collective": "AllReduce",
+              "owner": "outside-target-autograd",
+              "input_elements": 1,
+              "output_elements": 1,
+              "dtype": "Float",
+              "calls": 2,
+              "streams": [
+                7
+              ],
+              "launch_geometries": [
+                {
+                  "grid": [
+                    1,
+                    1,
+                    1
+                  ],
+                  "block": [
+                    128,
+                    1,
+                    1
+                  ],
+                  "calls": 2
+                }
+              ],
+              "kernel_ms": 19.131043,
+              "non_nccl_kernel_overlap_ms": 0.0,
+              "exposed_ms": 19.131043,
+              "median_call_us": 9565.521499999999,
+              "minimum_call_us": 4413.945,
+              "maximum_call_us": 14717.098
+            },
+            {
+              "kernel": "ncclDevKernel_AllReduce_Sum_f32_RING_LL",
+              "collective": "AllReduce",
+              "owner": "outside-target-autograd",
+              "input_elements": 794624,
+              "output_elements": 794624,
+              "dtype": "Float",
+              "calls": 1,
+              "streams": [
+                7
+              ],
+              "launch_geometries": [
+                {
+                  "grid": [
+                    4,
+                    1,
+                    1
+                  ],
+                  "block": [
+                    544,
+                    1,
+                    1
+                  ],
+                  "calls": 1
+                }
+              ],
+              "kernel_ms": 1.789981,
+              "non_nccl_kernel_overlap_ms": 0.0,
+              "exposed_ms": 1.789981,
+              "median_call_us": 1789.981,
+              "minimum_call_us": 1789.981,
+              "maximum_call_us": 1789.981
+            },
+            {
+              "kernel": "ncclDevKernel_ReduceScatter_Sum_bf16_RING_LL",
+              "collective": "ReduceScatter",
+              "owner": "LinearWithGradAccumulationAndAsyncCommunicationBackward",
+              "input_elements": 8388608,
+              "output_elements": 1048576,
+              "dtype": "BFloat16",
+              "calls": 4,
+              "streams": [
+                35
+              ],
+              "launch_geometries": [
+                {
+                  "grid": [
+                    4,
+                    1,
+                    1
+                  ],
+                  "block": [
+                    544,
+                    1,
+                    1
+                  ],
+                  "calls": 4
+                }
+              ],
+              "kernel_ms": 3.076028,
+              "non_nccl_kernel_overlap_ms": 2.195259765625,
+              "exposed_ms": 0.880768234375,
+              "median_call_us": 771.487,
+              "minimum_call_us": 726.559,
+              "maximum_call_us": 806.495
+            },
+            {
+              "kernel": "ncclDevKernel_ReduceScatter_Sum_bf16_RING_LL",
+              "collective": "ReduceScatter",
+              "owner": "_MA8CachedRawLinearBackward",
+              "input_elements": 8388608,
+              "output_elements": 1048576,
+              "dtype": "BFloat16",
+              "calls": 256,
+              "streams": [
+                35
+              ],
+              "launch_geometries": [
+                {
+                  "grid": [
+                    4,
+                    1,
+                    1
+                  ],
+                  "block": [
+                    544,
+                    1,
+                    1
+                  ],
+                  "calls": 256
+                }
+              ],
+              "kernel_ms": 154.32264699999993,
+              "non_nccl_kernel_overlap_ms": 70.93824951171875,
+              "exposed_ms": 83.38439748828124,
+              "median_call_us": 439.1995,
+              "minimum_call_us": 429.695,
+              "maximum_call_us": 2089.405
+            },
+            {
+              "kernel": "ncclDevKernel_SendRecv",
+              "collective": "SendRecv",
+              "owner": "ConsumerGemmRSFunction",
+              "input_elements": 7798784,
+              "output_elements": 7798784,
+              "dtype": "Byte",
+              "calls": 256,
+              "streams": [
+                35
+              ],
+              "launch_geometries": [
+                {
+                  "grid": [
+                    4,
+                    1,
+                    1
+                  ],
+                  "block": [
+                    640,
+                    1,
+                    1
+                  ],
+                  "calls": 256
+                }
+              ],
+              "kernel_ms": 148.84962100000004,
+              "non_nccl_kernel_overlap_ms": 0.0,
+              "exposed_ms": 148.84962100000004,
+              "median_call_us": 377.1515,
+              "minimum_call_us": 260.479,
+              "maximum_call_us": 4007.962
+            }
+          ]
+        },
+        {
+          "rank": 5,
+          "trace": "results/profile-op3-combined/rank5-profile.json.gz",
+          "sha256": "eadd0364a9f9bc3ee3655e1b0b384c7411bb53a07e1bd9cea474ee47d5908d88",
+          "groups": [
+            {
+              "kernel": "ncclDevKernel_AllGather_RING_LL",
+              "collective": "AllGather",
+              "owner": "ConsumerGemmRSFunctionBackward",
+              "input_elements": 1048576,
+              "output_elements": 8388608,
+              "dtype": "BFloat16",
+              "calls": 256,
+              "streams": [
+                7
+              ],
+              "launch_geometries": [
+                {
+                  "grid": [
+                    4,
+                    1,
+                    1
+                  ],
+                  "block": [
+                    544,
+                    1,
+                    1
+                  ],
+                  "calls": 256
+                }
+              ],
+              "kernel_ms": 135.764887,
+              "non_nccl_kernel_overlap_ms": 0.0,
+              "exposed_ms": 135.764887,
+              "median_call_us": 435.726,
+              "minimum_call_us": 419.198,
+              "maximum_call_us": 1959.224
+            },
+            {
+              "kernel": "ncclDevKernel_AllGather_RING_LL",
+              "collective": "AllGather",
+              "owner": "LinearWithGradAccumulationAndAsyncCommunication",
+              "input_elements": 1048576,
+              "output_elements": 8388608,
+              "dtype": "BFloat16",
+              "calls": 4,
+              "streams": [
+                7
+              ],
+              "launch_geometries": [
+                {
+                  "grid": [
+                    4,
+                    1,
+                    1
+                  ],
+                  "block": [
+                    544,
+                    1,
+                    1
+                  ],
+                  "calls": 4
+                }
+              ],
+              "kernel_ms": 2.2141669999999998,
+              "non_nccl_kernel_overlap_ms": 0.0,
+              "exposed_ms": 2.2141669999999998,
+              "median_call_us": 527.2295,
+              "minimum_call_us": 420.255,
+              "maximum_call_us": 739.453
+            },
+            {
+              "kernel": "ncclDevKernel_AllGather_RING_LL",
+              "collective": "AllGather",
+              "owner": "LinearWithGradAccumulationAndAsyncCommunicationBackward",
+              "input_elements": 1048576,
+              "output_elements": 8388608,
+              "dtype": "BFloat16",
+              "calls": 4,
+              "streams": [
+                35
+              ],
+              "launch_geometries": [
+                {
+                  "grid": [
+                    4,
+                    1,
+                    1
+                  ],
+                  "block": [
+                    544,
+                    1,
+                    1
+                  ],
+                  "calls": 4
+                }
+              ],
+              "kernel_ms": 4.03976,
+              "non_nccl_kernel_overlap_ms": 1.50146728515625,
+              "exposed_ms": 2.53829271484375,
+              "median_call_us": 737.133,
+              "minimum_call_us": 422.846,
+              "maximum_call_us": 2142.648
+            },
+            {
+              "kernel": "ncclDevKernel_AllGather_RING_LL",
+              "collective": "AllGather",
+              "owner": "_MA8CachedRawLinear",
+              "input_elements": 1048576,
+              "output_elements": 8388608,
+              "dtype": "BFloat16",
+              "calls": 256,
+              "streams": [
+                7
+              ],
+              "launch_geometries": [
+                {
+                  "grid": [
+                    4,
+                    1,
+                    1
+                  ],
+                  "block": [
+                    544,
+                    1,
+                    1
+                  ],
+                  "calls": 256
+                }
+              ],
+              "kernel_ms": 156.97377600000004,
+              "non_nccl_kernel_overlap_ms": 0.0,
+              "exposed_ms": 156.97377600000004,
+              "median_call_us": 432.3025,
+              "minimum_call_us": 418.015,
+              "maximum_call_us": 2512.63
+            },
+            {
+              "kernel": "ncclDevKernel_AllGather_RING_LL",
+              "collective": "AllGather",
+              "owner": "_ScatterToSequenceParallelRegionBackward",
+              "input_elements": 1048576,
+              "output_elements": 8388608,
+              "dtype": "BFloat16",
+              "calls": 4,
+              "streams": [
+                7
+              ],
+              "launch_geometries": [
+                {
+                  "grid": [
+                    4,
+                    1,
+                    1
+                  ],
+                  "block": [
+                    544,
+                    1,
+                    1
+                  ],
+                  "calls": 4
+                }
+              ],
+              "kernel_ms": 1.74201,
+              "non_nccl_kernel_overlap_ms": 0.0,
+              "exposed_ms": 1.74201,
+              "median_call_us": 436.5905,
+              "minimum_call_us": 428.959,
+              "maximum_call_us": 439.87
+            },
+            {
+              "kernel": "ncclDevKernel_AllReduce_Sum_bf16_RING_LL",
+              "collective": "AllReduce",
+              "owner": "_ReduceFromModelParallelRegion",
+              "input_elements": 8388608,
+              "output_elements": 8388608,
+              "dtype": "BFloat16",
+              "calls": 4,
+              "streams": [
+                7
+              ],
+              "launch_geometries": [
+                {
+                  "grid": [
+                    4,
+                    1,
+                    1
+                  ],
+                  "block": [
+                    544,
+                    1,
+                    1
+                  ],
+                  "calls": 4
+                }
+              ],
+              "kernel_ms": 4.118353,
+              "non_nccl_kernel_overlap_ms": 0.0,
+              "exposed_ms": 4.118353,
+              "median_call_us": 838.2529999999999,
+              "minimum_call_us": 829.437,
+              "maximum_call_us": 1612.41
+            },
+            {
+              "kernel": "ncclDevKernel_AllReduce_Sum_f32_RING_LL",
+              "collective": "AllReduce",
+              "owner": "_VocabParallelCrossEntropy",
+              "input_elements": 2048,
+              "output_elements": 2048,
+              "dtype": "Float",
+              "calls": 12,
+              "streams": [
+                7
+              ],
+              "launch_geometries": [
+                {
+                  "grid": [
+                    1,
+                    1,
+                    1
+                  ],
+                  "block": [
+                    128,
+                    1,
+                    1
+                  ],
+                  "calls": 12
+                }
+              ],
+              "kernel_ms": 0.37641700000000006,
+              "non_nccl_kernel_overlap_ms": 0.0,
+              "exposed_ms": 0.37641700000000006,
+              "median_call_us": 24.64,
+              "minimum_call_us": 22.464,
+              "maximum_call_us": 66.528
+            },
+            {
+              "kernel": "ncclDevKernel_AllReduce_Sum_f32_RING_LL",
+              "collective": "AllReduce",
+              "owner": "outside-target-autograd",
+              "input_elements": 1,
+              "output_elements": 1,
+              "dtype": "Float",
+              "calls": 2,
+              "streams": [
+                7
+              ],
+              "launch_geometries": [
+                {
+                  "grid": [
+                    1,
+                    1,
+                    1
+                  ],
+                  "block": [
+                    128,
+                    1,
+                    1
+                  ],
+                  "calls": 2
+                }
+              ],
+              "kernel_ms": 4.955405,
+              "non_nccl_kernel_overlap_ms": 0.0,
+              "exposed_ms": 4.955405,
+              "median_call_us": 2477.7025,
+              "minimum_call_us": 1391.899,
+              "maximum_call_us": 3563.506
+            },
+            {
+              "kernel": "ncclDevKernel_AllReduce_Sum_f32_RING_LL",
+              "collective": "AllReduce",
+              "owner": "outside-target-autograd",
+              "input_elements": 794624,
+              "output_elements": 794624,
+              "dtype": "Float",
+              "calls": 1,
+              "streams": [
+                7
+              ],
+              "launch_geometries": [
+                {
+                  "grid": [
+                    4,
+                    1,
+                    1
+                  ],
+                  "block": [
+                    544,
+                    1,
+                    1
+                  ],
+                  "calls": 1
+                }
+              ],
+              "kernel_ms": 1.813625,
+              "non_nccl_kernel_overlap_ms": 0.0,
+              "exposed_ms": 1.813625,
+              "median_call_us": 1813.625,
+              "minimum_call_us": 1813.625,
+              "maximum_call_us": 1813.625
+            },
+            {
+              "kernel": "ncclDevKernel_ReduceScatter_Sum_bf16_RING_LL",
+              "collective": "ReduceScatter",
+              "owner": "LinearWithGradAccumulationAndAsyncCommunicationBackward",
+              "input_elements": 8388608,
+              "output_elements": 1048576,
+              "dtype": "BFloat16",
+              "calls": 4,
+              "streams": [
+                35
+              ],
+              "launch_geometries": [
+                {
+                  "grid": [
+                    4,
+                    1,
+                    1
+                  ],
+                  "block": [
+                    544,
+                    1,
+                    1
+                  ],
+                  "calls": 4
+                }
+              ],
+              "kernel_ms": 2.388278,
+              "non_nccl_kernel_overlap_ms": 1.92316015625,
+              "exposed_ms": 0.4651178437500001,
+              "median_call_us": 579.5175,
+              "minimum_call_us": 421.79,
+              "maximum_call_us": 807.453
+            },
+            {
+              "kernel": "ncclDevKernel_ReduceScatter_Sum_bf16_RING_LL",
+              "collective": "ReduceScatter",
+              "owner": "_MA8CachedRawLinearBackward",
+              "input_elements": 8388608,
+              "output_elements": 1048576,
+              "dtype": "BFloat16",
+              "calls": 256,
+              "streams": [
+                35
+              ],
+              "launch_geometries": [
+                {
+                  "grid": [
+                    4,
+                    1,
+                    1
+                  ],
+                  "block": [
+                    544,
+                    1,
+                    1
+                  ],
+                  "calls": 256
+                }
+              ],
+              "kernel_ms": 133.82315,
+              "non_nccl_kernel_overlap_ms": 70.68507666015626,
+              "exposed_ms": 63.13807333984378,
+              "median_call_us": 438.86199999999997,
+              "minimum_call_us": 418.59,
+              "maximum_call_us": 1950.904
+            },
+            {
+              "kernel": "ncclDevKernel_SendRecv",
+              "collective": "SendRecv",
+              "owner": "ConsumerGemmRSFunction",
+              "input_elements": 7798784,
+              "output_elements": 7798784,
+              "dtype": "Byte",
+              "calls": 256,
+              "streams": [
+                35
+              ],
+              "launch_geometries": [
+                {
+                  "grid": [
+                    4,
+                    1,
+                    1
+                  ],
+                  "block": [
+                    640,
+                    1,
+                    1
+                  ],
+                  "calls": 256
+                }
+              ],
+              "kernel_ms": 105.12475,
+              "non_nccl_kernel_overlap_ms": 0.0,
+              "exposed_ms": 105.12475,
+              "median_call_us": 265.743,
+              "minimum_call_us": 253.119,
+              "maximum_call_us": 4089.105
+            }
+          ]
+        },
+        {
+          "rank": 6,
+          "trace": "results/profile-op3-combined/rank6-profile.json.gz",
+          "sha256": "2cd3578997b205c2f7db68c9534ac988589752e9c065a95517037b290e3306c4",
+          "groups": [
+            {
+              "kernel": "ncclDevKernel_AllGather_RING_LL",
+              "collective": "AllGather",
+              "owner": "ConsumerGemmRSFunctionBackward",
+              "input_elements": 1048576,
+              "output_elements": 8388608,
+              "dtype": "BFloat16",
+              "calls": 256,
+              "streams": [
+                7
+              ],
+              "launch_geometries": [
+                {
+                  "grid": [
+                    4,
+                    1,
+                    1
+                  ],
+                  "block": [
+                    544,
+                    1,
+                    1
+                  ],
+                  "calls": 256
+                }
+              ],
+              "kernel_ms": 161.09898200000006,
+              "non_nccl_kernel_overlap_ms": 0.0,
+              "exposed_ms": 161.09898200000006,
+              "median_call_us": 438.98900000000003,
+              "minimum_call_us": 421.789,
+              "maximum_call_us": 2277.04
+            },
+            {
+              "kernel": "ncclDevKernel_AllGather_RING_LL",
+              "collective": "AllGather",
+              "owner": "LinearWithGradAccumulationAndAsyncCommunication",
+              "input_elements": 1048576,
+              "output_elements": 8388608,
+              "dtype": "BFloat16",
+              "calls": 4,
+              "streams": [
+                7
+              ],
+              "launch_geometries": [
+                {
+                  "grid": [
+                    4,
+                    1,
+                    1
+                  ],
+                  "block": [
+                    544,
+                    1,
+                    1
+                  ],
+                  "calls": 4
+                }
+              ],
+              "kernel_ms": 2.812267,
+              "non_nccl_kernel_overlap_ms": 0.0,
+              "exposed_ms": 2.812267,
+              "median_call_us": 716.3305,
+              "minimum_call_us": 603.068,
+              "maximum_call_us": 776.538
+            },
+            {
+              "kernel": "ncclDevKernel_AllGather_RING_LL",
+              "collective": "AllGather",
+              "owner": "LinearWithGradAccumulationAndAsyncCommunicationBackward",
+              "input_elements": 1048576,
+              "output_elements": 8388608,
+              "dtype": "BFloat16",
+              "calls": 4,
+              "streams": [
+                35
+              ],
+              "launch_geometries": [
+                {
+                  "grid": [
+                    4,
+                    1,
+                    1
+                  ],
+                  "block": [
+                    544,
+                    1,
+                    1
+                  ],
+                  "calls": 4
+                }
+              ],
+              "kernel_ms": 16.550411,
+              "non_nccl_kernel_overlap_ms": 2.2097119140625,
+              "exposed_ms": 14.3406990859375,
+              "median_call_us": 4128.787,
+              "minimum_call_us": 3880.229,
+              "maximum_call_us": 4412.608
+            },
+            {
+              "kernel": "ncclDevKernel_AllGather_RING_LL",
+              "collective": "AllGather",
+              "owner": "_MA8CachedRawLinear",
+              "input_elements": 1048576,
+              "output_elements": 8388608,
+              "dtype": "BFloat16",
+              "calls": 256,
+              "streams": [
+                7
+              ],
+              "launch_geometries": [
+                {
+                  "grid": [
+                    4,
+                    1,
+                    1
+                  ],
+                  "block": [
+                    544,
+                    1,
+                    1
+                  ],
+                  "calls": 256
+                }
+              ],
+              "kernel_ms": 223.52699299999992,
+              "non_nccl_kernel_overlap_ms": 0.0,
+              "exposed_ms": 223.52699299999992,
+              "median_call_us": 853.002,
+              "minimum_call_us": 423.037,
+              "maximum_call_us": 2482.734
+            },
+            {
+              "kernel": "ncclDevKernel_AllGather_RING_LL",
+              "collective": "AllGather",
+              "owner": "_ScatterToSequenceParallelRegionBackward",
+              "input_elements": 1048576,
+              "output_elements": 8388608,
+              "dtype": "BFloat16",
+              "calls": 4,
+              "streams": [
+                7
+              ],
+              "launch_geometries": [
+                {
+                  "grid": [
+                    4,
+                    1,
+                    1
+                  ],
+                  "block": [
+                    544,
+                    1,
+                    1
+                  ],
+                  "calls": 4
+                }
+              ],
+              "kernel_ms": 1.736084,
+              "non_nccl_kernel_overlap_ms": 0.0,
+              "exposed_ms": 1.736084,
+              "median_call_us": 435.053,
+              "minimum_call_us": 427.229,
+              "maximum_call_us": 438.749
+            },
+            {
+              "kernel": "ncclDevKernel_AllReduce_Sum_bf16_RING_LL",
+              "collective": "AllReduce",
+              "owner": "_ReduceFromModelParallelRegion",
+              "input_elements": 8388608,
+              "output_elements": 8388608,
+              "dtype": "BFloat16",
+              "calls": 4,
+              "streams": [
+                7
+              ],
+              "launch_geometries": [
+                {
+                  "grid": [
+                    4,
+                    1,
+                    1
+                  ],
+                  "block": [
+                    544,
+                    1,
+                    1
+                  ],
+                  "calls": 4
+                }
+              ],
+              "kernel_ms": 44.834497,
+              "non_nccl_kernel_overlap_ms": 0.0,
+              "exposed_ms": 44.834497,
+              "median_call_us": 834.3465,
+              "minimum_call_us": 822.17,
+              "maximum_call_us": 42343.634
+            },
+            {
+              "kernel": "ncclDevKernel_AllReduce_Sum_f32_RING_LL",
+              "collective": "AllReduce",
+              "owner": "_VocabParallelCrossEntropy",
+              "input_elements": 2048,
+              "output_elements": 2048,
+              "dtype": "Float",
+              "calls": 12,
+              "streams": [
+                7
+              ],
+              "launch_geometries": [
+                {
+                  "grid": [
+                    1,
+                    1,
+                    1
+                  ],
+                  "block": [
+                    128,
+                    1,
+                    1
+                  ],
+                  "calls": 12
+                }
+              ],
+              "kernel_ms": 0.397342,
+              "non_nccl_kernel_overlap_ms": 0.0,
+              "exposed_ms": 0.397342,
+              "median_call_us": 23.4555,
+              "minimum_call_us": 22.016,
+              "maximum_call_us": 99.456
+            },
+            {
+              "kernel": "ncclDevKernel_AllReduce_Sum_f32_RING_LL",
+              "collective": "AllReduce",
+              "owner": "outside-target-autograd",
+              "input_elements": 1,
+              "output_elements": 1,
+              "dtype": "Float",
+              "calls": 2,
+              "streams": [
+                7
+              ],
+              "launch_geometries": [
+                {
+                  "grid": [
+                    1,
+                    1,
+                    1
+                  ],
+                  "block": [
+                    128,
+                    1,
+                    1
+                  ],
+                  "calls": 2
+                }
+              ],
+              "kernel_ms": 18.514620000000004,
+              "non_nccl_kernel_overlap_ms": 0.0,
+              "exposed_ms": 18.514620000000004,
+              "median_call_us": 9257.310000000001,
+              "minimum_call_us": 3827.813,
+              "maximum_call_us": 14686.807
+            },
+            {
+              "kernel": "ncclDevKernel_AllReduce_Sum_f32_RING_LL",
+              "collective": "AllReduce",
+              "owner": "outside-target-autograd",
+              "input_elements": 794624,
+              "output_elements": 794624,
+              "dtype": "Float",
+              "calls": 1,
+              "streams": [
+                7
+              ],
+              "launch_geometries": [
+                {
+                  "grid": [
+                    4,
+                    1,
+                    1
+                  ],
+                  "block": [
+                    544,
+                    1,
+                    1
+                  ],
+                  "calls": 1
+                }
+              ],
+              "kernel_ms": 1.8223230000000001,
+              "non_nccl_kernel_overlap_ms": 0.0,
+              "exposed_ms": 1.8223230000000001,
+              "median_call_us": 1822.323,
+              "minimum_call_us": 1822.323,
+              "maximum_call_us": 1822.323
+            },
+            {
+              "kernel": "ncclDevKernel_ReduceScatter_Sum_bf16_RING_LL",
+              "collective": "ReduceScatter",
+              "owner": "LinearWithGradAccumulationAndAsyncCommunicationBackward",
+              "input_elements": 8388608,
+              "output_elements": 1048576,
+              "dtype": "BFloat16",
+              "calls": 4,
+              "streams": [
+                35
+              ],
+              "launch_geometries": [
+                {
+                  "grid": [
+                    4,
+                    1,
+                    1
+                  ],
+                  "block": [
+                    544,
+                    1,
+                    1
+                  ],
+                  "calls": 4
+                }
+              ],
+              "kernel_ms": 3.112009,
+              "non_nccl_kernel_overlap_ms": 2.20212841796875,
+              "exposed_ms": 0.90988058203125,
+              "median_call_us": 786.634,
+              "minimum_call_us": 733.115,
+              "maximum_call_us": 805.626
+            },
+            {
+              "kernel": "ncclDevKernel_ReduceScatter_Sum_bf16_RING_LL",
+              "collective": "ReduceScatter",
+              "owner": "_MA8CachedRawLinearBackward",
+              "input_elements": 8388608,
+              "output_elements": 1048576,
+              "dtype": "BFloat16",
+              "calls": 256,
+              "streams": [
+                35
+              ],
+              "launch_geometries": [
+                {
+                  "grid": [
+                    4,
+                    1,
+                    1
+                  ],
+                  "block": [
+                    544,
+                    1,
+                    1
+                  ],
+                  "calls": 256
+                }
+              ],
+              "kernel_ms": 155.45014599999993,
+              "non_nccl_kernel_overlap_ms": 71.123134765625,
+              "exposed_ms": 84.32701123437502,
+              "median_call_us": 441.837,
+              "minimum_call_us": 421.757,
+              "maximum_call_us": 2114.001
+            },
+            {
+              "kernel": "ncclDevKernel_SendRecv",
+              "collective": "SendRecv",
+              "owner": "ConsumerGemmRSFunction",
+              "input_elements": 7798784,
+              "output_elements": 7798784,
+              "dtype": "Byte",
+              "calls": 256,
+              "streams": [
+                35
+              ],
+              "launch_geometries": [
+                {
+                  "grid": [
+                    4,
+                    1,
+                    1
+                  ],
+                  "block": [
+                    640,
+                    1,
+                    1
+                  ],
+                  "calls": 256
+                }
+              ],
+              "kernel_ms": 151.78234899999998,
+              "non_nccl_kernel_overlap_ms": 0.0,
+              "exposed_ms": 151.78234899999998,
+              "median_call_us": 422.30100000000004,
+              "minimum_call_us": 255.838,
+              "maximum_call_us": 4101.731
+            }
+          ]
+        },
+        {
+          "rank": 7,
+          "trace": "results/profile-op3-combined/rank7-profile.json.gz",
+          "sha256": "1bcb18c491e987d3956f749c0261422ad76f3689e7d10c0f6f4ffc79b0b56d35",
+          "groups": [
+            {
+              "kernel": "ncclDevKernel_AllGather_RING_LL",
+              "collective": "AllGather",
+              "owner": "ConsumerGemmRSFunctionBackward",
+              "input_elements": 1048576,
+              "output_elements": 8388608,
+              "dtype": "BFloat16",
+              "calls": 256,
+              "streams": [
+                7
+              ],
+              "launch_geometries": [
+                {
+                  "grid": [
+                    4,
+                    1,
+                    1
+                  ],
+                  "block": [
+                    544,
+                    1,
+                    1
+                  ],
+                  "calls": 256
+                }
+              ],
+              "kernel_ms": 152.94583500000002,
+              "non_nccl_kernel_overlap_ms": 0.0,
+              "exposed_ms": 152.94583500000002,
+              "median_call_us": 456.62149999999997,
+              "minimum_call_us": 402.398,
+              "maximum_call_us": 2299.477
+            },
+            {
+              "kernel": "ncclDevKernel_AllGather_RING_LL",
+              "collective": "AllGather",
+              "owner": "LinearWithGradAccumulationAndAsyncCommunication",
+              "input_elements": 1048576,
+              "output_elements": 8388608,
+              "dtype": "BFloat16",
+              "calls": 4,
+              "streams": [
+                7
+              ],
+              "launch_geometries": [
+                {
+                  "grid": [
+                    4,
+                    1,
+                    1
+                  ],
+                  "block": [
+                    544,
+                    1,
+                    1
+                  ],
+                  "calls": 4
+                }
+              ],
+              "kernel_ms": 2.6329480000000003,
+              "non_nccl_kernel_overlap_ms": 0.0,
+              "exposed_ms": 2.6329480000000003,
+              "median_call_us": 691.7570000000001,
+              "minimum_call_us": 410.046,
+              "maximum_call_us": 839.388
+            },
+            {
+              "kernel": "ncclDevKernel_AllGather_RING_LL",
+              "collective": "AllGather",
+              "owner": "LinearWithGradAccumulationAndAsyncCommunicationBackward",
+              "input_elements": 1048576,
+              "output_elements": 8388608,
+              "dtype": "BFloat16",
+              "calls": 4,
+              "streams": [
+                35
+              ],
+              "launch_geometries": [
+                {
+                  "grid": [
+                    4,
+                    1,
+                    1
+                  ],
+                  "block": [
+                    544,
+                    1,
+                    1
+                  ],
+                  "calls": 4
+                }
+              ],
+              "kernel_ms": 10.010031,
+              "non_nccl_kernel_overlap_ms": 1.34748193359375,
+              "exposed_ms": 8.66254906640625,
+              "median_call_us": 2614.5155,
+              "minimum_call_us": 412.286,
+              "maximum_call_us": 4368.714
+            },
+            {
+              "kernel": "ncclDevKernel_AllGather_RING_LL",
+              "collective": "AllGather",
+              "owner": "_MA8CachedRawLinear",
+              "input_elements": 1048576,
+              "output_elements": 8388608,
+              "dtype": "BFloat16",
+              "calls": 256,
+              "streams": [
+                7
+              ],
+              "launch_geometries": [
+                {
+                  "grid": [
+                    4,
+                    1,
+                    1
+                  ],
+                  "block": [
+                    544,
+                    1,
+                    1
+                  ],
+                  "calls": 256
+                }
+              ],
+              "kernel_ms": 203.98177200000003,
+              "non_nccl_kernel_overlap_ms": 0.0,
+              "exposed_ms": 203.98177200000003,
+              "median_call_us": 756.1244999999999,
+              "minimum_call_us": 403.806,
+              "maximum_call_us": 2496.34
+            },
+            {
+              "kernel": "ncclDevKernel_AllGather_RING_LL",
+              "collective": "AllGather",
+              "owner": "_ScatterToSequenceParallelRegionBackward",
+              "input_elements": 1048576,
+              "output_elements": 8388608,
+              "dtype": "BFloat16",
+              "calls": 4,
+              "streams": [
+                7
+              ],
+              "launch_geometries": [
+                {
+                  "grid": [
+                    4,
+                    1,
+                    1
+                  ],
+                  "block": [
+                    544,
+                    1,
+                    1
+                  ],
+                  "calls": 4
+                }
+              ],
+              "kernel_ms": 1.8108400000000002,
+              "non_nccl_kernel_overlap_ms": 0.0,
+              "exposed_ms": 1.8108400000000002,
+              "median_call_us": 456.334,
+              "minimum_call_us": 439.774,
+              "maximum_call_us": 458.398
+            },
+            {
+              "kernel": "ncclDevKernel_AllReduce_Sum_bf16_RING_LL",
+              "collective": "AllReduce",
+              "owner": "_ReduceFromModelParallelRegion",
+              "input_elements": 8388608,
+              "output_elements": 8388608,
+              "dtype": "BFloat16",
+              "calls": 4,
+              "streams": [
+                7
+              ],
+              "launch_geometries": [
+                {
+                  "grid": [
+                    4,
+                    1,
+                    1
+                  ],
+                  "block": [
+                    544,
+                    1,
+                    1
+                  ],
+                  "calls": 4
+                }
+              ],
+              "kernel_ms": 3.602608,
+              "non_nccl_kernel_overlap_ms": 0.0,
+              "exposed_ms": 3.602608,
+              "median_call_us": 930.46,
+              "minimum_call_us": 796.124,
+              "maximum_call_us": 945.564
+            },
+            {
+              "kernel": "ncclDevKernel_AllReduce_Sum_f32_RING_LL",
+              "collective": "AllReduce",
+              "owner": "_VocabParallelCrossEntropy",
+              "input_elements": 2048,
+              "output_elements": 2048,
+              "dtype": "Float",
+              "calls": 12,
+              "streams": [
+                7
+              ],
+              "launch_geometries": [
+                {
+                  "grid": [
+                    1,
+                    1,
+                    1
+                  ],
+                  "block": [
+                    128,
+                    1,
+                    1
+                  ],
+                  "calls": 12
+                }
+              ],
+              "kernel_ms": 1.2169550000000002,
+              "non_nccl_kernel_overlap_ms": 0.0,
+              "exposed_ms": 1.2169550000000002,
+              "median_call_us": 44.063500000000005,
+              "minimum_call_us": 22.944,
+              "maximum_call_us": 273.567
+            },
+            {
+              "kernel": "ncclDevKernel_AllReduce_Sum_f32_RING_LL",
+              "collective": "AllReduce",
+              "owner": "outside-target-autograd",
+              "input_elements": 1,
+              "output_elements": 1,
+              "dtype": "Float",
+              "calls": 2,
+              "streams": [
+                7
+              ],
+              "launch_geometries": [
+                {
+                  "grid": [
+                    1,
+                    1,
+                    1
+                  ],
+                  "block": [
+                    128,
+                    1,
+                    1
+                  ],
+                  "calls": 2
+                }
+              ],
+              "kernel_ms": 11.28353,
+              "non_nccl_kernel_overlap_ms": 0.0,
+              "exposed_ms": 11.28353,
+              "median_call_us": 5641.765,
+              "minimum_call_us": 1880.055,
+              "maximum_call_us": 9403.475
+            },
+            {
+              "kernel": "ncclDevKernel_AllReduce_Sum_f32_RING_LL",
+              "collective": "AllReduce",
+              "owner": "outside-target-autograd",
+              "input_elements": 794624,
+              "output_elements": 794624,
+              "dtype": "Float",
+              "calls": 1,
+              "streams": [
+                7
+              ],
+              "launch_geometries": [
+                {
+                  "grid": [
+                    4,
+                    1,
+                    1
+                  ],
+                  "block": [
+                    544,
+                    1,
+                    1
+                  ],
+                  "calls": 1
+                }
+              ],
+              "kernel_ms": 1.921495,
+              "non_nccl_kernel_overlap_ms": 0.0,
+              "exposed_ms": 1.921495,
+              "median_call_us": 1921.495,
+              "minimum_call_us": 1921.495,
+              "maximum_call_us": 1921.495
+            },
+            {
+              "kernel": "ncclDevKernel_ReduceScatter_Sum_bf16_RING_LL",
+              "collective": "ReduceScatter",
+              "owner": "LinearWithGradAccumulationAndAsyncCommunicationBackward",
+              "input_elements": 8388608,
+              "output_elements": 1048576,
+              "dtype": "BFloat16",
+              "calls": 4,
+              "streams": [
+                35
+              ],
+              "launch_geometries": [
+                {
+                  "grid": [
+                    4,
+                    1,
+                    1
+                  ],
+                  "block": [
+                    544,
+                    1,
+                    1
+                  ],
+                  "calls": 4
+                }
+              ],
+              "kernel_ms": 2.795794,
+              "non_nccl_kernel_overlap_ms": 1.3422646484375,
+              "exposed_ms": 1.4535293515624998,
+              "median_call_us": 785.7239999999999,
+              "minimum_call_us": 422.398,
+              "maximum_call_us": 801.948
+            },
+            {
+              "kernel": "ncclDevKernel_ReduceScatter_Sum_bf16_RING_LL",
+              "collective": "ReduceScatter",
+              "owner": "_MA8CachedRawLinearBackward",
+              "input_elements": 8388608,
+              "output_elements": 1048576,
+              "dtype": "BFloat16",
+              "calls": 256,
+              "streams": [
+                35
+              ],
+              "launch_geometries": [
+                {
+                  "grid": [
+                    4,
+                    1,
+                    1
+                  ],
+                  "block": [
+                    544,
+                    1,
+                    1
+                  ],
+                  "calls": 256
+                }
+              ],
+              "kernel_ms": 201.60838899999993,
+              "non_nccl_kernel_overlap_ms": 49.30955859375,
+              "exposed_ms": 152.29883040625003,
+              "median_call_us": 699.789,
+              "minimum_call_us": 409.054,
+              "maximum_call_us": 2325.109
+            },
+            {
+              "kernel": "ncclDevKernel_SendRecv",
+              "collective": "SendRecv",
+              "owner": "ConsumerGemmRSFunction",
+              "input_elements": 7798784,
+              "output_elements": 7798784,
+              "dtype": "Byte",
+              "calls": 256,
+              "streams": [
+                35
+              ],
+              "launch_geometries": [
+                {
+                  "grid": [
+                    4,
+                    1,
+                    1
+                  ],
+                  "block": [
+                    640,
+                    1,
+                    1
+                  ],
+                  "calls": 256
+                }
+              ],
+              "kernel_ms": 163.29969000000003,
+              "non_nccl_kernel_overlap_ms": 0.0,
+              "exposed_ms": 163.29969000000003,
+              "median_call_us": 444.0935,
+              "minimum_call_us": 250.655,
+              "maximum_call_us": 4282.092
+            }
+          ]
+        }
+      ],
+      "summary": {
+        "groups": [
+          {
+            "kernel": "ncclDevKernel_AllGather_RING_LL",
+            "collective": "AllGather",
+            "owner": "ConsumerGemmRSFunctionBackward",
+            "input_elements": 1048576,
+            "output_elements": 8388608,
+            "dtype": "BFloat16",
+            "calls_per_rank": [
+              256,
+              256,
+              256,
+              256,
+              256,
+              256,
+              256,
+              256
+            ],
+            "launch_geometry_counts": [
+              {
+                "grid": [
+                  4,
+                  1,
+                  1
+                ],
+                "block": [
+                  544,
+                  1,
+                  1
+                ],
+                "calls_per_rank": [
+                  256,
+                  256,
+                  256,
+                  256,
+                  256,
+                  256,
+                  256,
+                  256
+                ]
+              }
+            ],
+            "median_rank_kernel_ms": 161.51381650000008,
+            "median_rank_non_nccl_kernel_overlap_ms": 0.0,
+            "median_rank_exposed_ms": 161.51381650000008,
+            "median_of_rank_call_medians_us": 443.7585
+          },
+          {
+            "kernel": "ncclDevKernel_AllGather_RING_LL",
+            "collective": "AllGather",
+            "owner": "LinearWithGradAccumulationAndAsyncCommunication",
+            "input_elements": 1048576,
+            "output_elements": 8388608,
+            "dtype": "BFloat16",
+            "calls_per_rank": [
+              4,
+              4,
+              4,
+              4,
+              4,
+              4,
+              4,
+              4
+            ],
+            "launch_geometry_counts": [
+              {
+                "grid": [
+                  4,
+                  1,
+                  1
+                ],
+                "block": [
+                  544,
+                  1,
+                  1
+                ],
+                "calls_per_rank": [
+                  4,
+                  4,
+                  4,
+                  4,
+                  4,
+                  4,
+                  4,
+                  4
+                ]
+              }
+            ],
+            "median_rank_kernel_ms": 2.7973255,
+            "median_rank_non_nccl_kernel_overlap_ms": 0.0,
+            "median_rank_exposed_ms": 2.7973255,
+            "median_of_rank_call_medians_us": 701.6595
+          },
+          {
+            "kernel": "ncclDevKernel_AllGather_RING_LL",
+            "collective": "AllGather",
+            "owner": "LinearWithGradAccumulationAndAsyncCommunicationBackward",
+            "input_elements": 1048576,
+            "output_elements": 8388608,
+            "dtype": "BFloat16",
+            "calls_per_rank": [
+              4,
+              4,
+              4,
+              4,
+              4,
+              4,
+              4,
+              4
+            ],
+            "launch_geometry_counts": [
+              {
+                "grid": [
+                  4,
+                  1,
+                  1
+                ],
+                "block": [
+                  544,
+                  1,
+                  1
+                ],
+                "calls_per_rank": [
+                  4,
+                  4,
+                  4,
+                  4,
+                  4,
+                  4,
+                  4,
+                  4
+                ]
+              }
+            ],
+            "median_rank_kernel_ms": 16.529511,
+            "median_rank_non_nccl_kernel_overlap_ms": 1.693716796875,
+            "median_rank_exposed_ms": 14.322132826171874,
+            "median_of_rank_call_medians_us": 4099.34525
+          },
+          {
+            "kernel": "ncclDevKernel_AllGather_RING_LL",
+            "collective": "AllGather",
+            "owner": "_MA8CachedRawLinear",
+            "input_elements": 1048576,
+            "output_elements": 8388608,
+            "dtype": "BFloat16",
+            "calls_per_rank": [
+              256,
+              256,
+              256,
+              256,
+              256,
+              256,
+              256,
+              256
+            ],
+            "launch_geometry_counts": [
+              {
+                "grid": [
+                  4,
+                  1,
+                  1
+                ],
+                "block": [
+                  544,
+                  1,
+                  1
+                ],
+                "calls_per_rank": [
+                  256,
+                  256,
+                  256,
+                  256,
+                  256,
+                  256,
+                  256,
+                  256
+                ]
+              }
+            ],
+            "median_rank_kernel_ms": 221.40659599999992,
+            "median_rank_non_nccl_kernel_overlap_ms": 0.0,
+            "median_rank_exposed_ms": 221.40659599999992,
+            "median_of_rank_call_medians_us": 833.69275
+          },
+          {
+            "kernel": "ncclDevKernel_AllGather_RING_LL",
+            "collective": "AllGather",
+            "owner": "_ScatterToSequenceParallelRegionBackward",
+            "input_elements": 1048576,
+            "output_elements": 8388608,
+            "dtype": "BFloat16",
+            "calls_per_rank": [
+              4,
+              4,
+              4,
+              4,
+              4,
+              4,
+              4,
+              4
+            ],
+            "launch_geometry_counts": [
+              {
+                "grid": [
+                  4,
+                  1,
+                  1
+                ],
+                "block": [
+                  544,
+                  1,
+                  1
+                ],
+                "calls_per_rank": [
+                  4,
+                  4,
+                  4,
+                  4,
+                  4,
+                  4,
+                  4,
+                  4
+                ]
+              }
+            ],
+            "median_rank_kernel_ms": 1.7515315,
+            "median_rank_non_nccl_kernel_overlap_ms": 0.0,
+            "median_rank_exposed_ms": 1.7515315,
+            "median_of_rank_call_medians_us": 438.39125
+          },
+          {
+            "kernel": "ncclDevKernel_AllReduce_Sum_bf16_RING_LL",
+            "collective": "AllReduce",
+            "owner": "_ReduceFromModelParallelRegion",
+            "input_elements": 8388608,
+            "output_elements": 8388608,
+            "dtype": "BFloat16",
+            "calls_per_rank": [
+              4,
+              4,
+              4,
+              4,
+              4,
+              4,
+              4,
+              4
+            ],
+            "launch_geometry_counts": [
+              {
+                "grid": [
+                  4,
+                  1,
+                  1
+                ],
+                "block": [
+                  544,
+                  1,
+                  1
+                ],
+                "calls_per_rank": [
+                  4,
+                  4,
+                  4,
+                  4,
+                  4,
+                  4,
+                  4,
+                  4
+                ]
+              }
+            ],
+            "median_rank_kernel_ms": 26.235125999999998,
+            "median_rank_non_nccl_kernel_overlap_ms": 0.0,
+            "median_rank_exposed_ms": 26.235125999999998,
+            "median_of_rank_call_medians_us": 836.2997499999999
+          },
+          {
+            "kernel": "ncclDevKernel_AllReduce_Sum_f32_RING_LL",
+            "collective": "AllReduce",
+            "owner": "_VocabParallelCrossEntropy",
+            "input_elements": 2048,
+            "output_elements": 2048,
+            "dtype": "Float",
+            "calls_per_rank": [
+              12,
+              12,
+              12,
+              12,
+              12,
+              12,
+              12,
+              12
+            ],
+            "launch_geometry_counts": [
+              {
+                "grid": [
+                  1,
+                  1,
+                  1
+                ],
+                "block": [
+                  128,
+                  1,
+                  1
+                ],
+                "calls_per_rank": [
+                  12,
+                  12,
+                  12,
+                  12,
+                  12,
+                  12,
+                  12,
+                  12
+                ]
+              }
+            ],
+            "median_rank_kernel_ms": 0.4621415,
+            "median_rank_non_nccl_kernel_overlap_ms": 0.0,
+            "median_rank_exposed_ms": 0.4621415,
+            "median_of_rank_call_medians_us": 24.824
+          },
+          {
+            "kernel": "ncclDevKernel_AllReduce_Sum_f32_RING_LL",
+            "collective": "AllReduce",
+            "owner": "outside-target-autograd",
+            "input_elements": 1,
+            "output_elements": 1,
+            "dtype": "Float",
+            "calls_per_rank": [
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2
+            ],
+            "launch_geometry_counts": [
+              {
+                "grid": [
+                  1,
+                  1,
+                  1
+                ],
+                "block": [
+                  128,
+                  1,
+                  1
+                ],
+                "calls_per_rank": [
+                  2,
+                  2,
+                  2,
+                  2,
+                  2,
+                  2,
+                  2,
+                  2
+                ]
+              }
+            ],
+            "median_rank_kernel_ms": 16.915870500000004,
+            "median_rank_non_nccl_kernel_overlap_ms": 0.0,
+            "median_rank_exposed_ms": 16.915870500000004,
+            "median_of_rank_call_medians_us": 8457.93525
+          },
+          {
+            "kernel": "ncclDevKernel_AllReduce_Sum_f32_RING_LL",
+            "collective": "AllReduce",
+            "owner": "outside-target-autograd",
+            "input_elements": 794624,
+            "output_elements": 794624,
+            "dtype": "Float",
+            "calls_per_rank": [
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1
+            ],
+            "launch_geometry_counts": [
+              {
+                "grid": [
+                  4,
+                  1,
+                  1
+                ],
+                "block": [
+                  544,
+                  1,
+                  1
+                ],
+                "calls_per_rank": [
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1
+                ]
+              }
+            ],
+            "median_rank_kernel_ms": 1.817974,
+            "median_rank_non_nccl_kernel_overlap_ms": 0.0,
+            "median_rank_exposed_ms": 1.817974,
+            "median_of_rank_call_medians_us": 1817.9740000000002
+          },
+          {
+            "kernel": "ncclDevKernel_ReduceScatter_Sum_bf16_RING_LL",
+            "collective": "ReduceScatter",
+            "owner": "LinearWithGradAccumulationAndAsyncCommunicationBackward",
+            "input_elements": 8388608,
+            "output_elements": 1048576,
+            "dtype": "BFloat16",
+            "calls_per_rank": [
+              4,
+              4,
+              4,
+              4,
+              4,
+              4,
+              4,
+              4
+            ],
+            "launch_geometry_counts": [
+              {
+                "grid": [
+                  4,
+                  1,
+                  1
+                ],
+                "block": [
+                  544,
+                  1,
+                  1
+                ],
+                "calls_per_rank": [
+                  4,
+                  4,
+                  4,
+                  4,
+                  4,
+                  4,
+                  4,
+                  4
+                ]
+              }
+            ],
+            "median_rank_kernel_ms": 3.0850289999999996,
+            "median_rank_non_nccl_kernel_overlap_ms": 1.9866884765625001,
+            "median_rank_exposed_ms": 0.9034814140624999,
+            "median_of_rank_call_medians_us": 779.5877499999999
+          },
+          {
+            "kernel": "ncclDevKernel_ReduceScatter_Sum_bf16_RING_LL",
+            "collective": "ReduceScatter",
+            "owner": "_MA8CachedRawLinearBackward",
+            "input_elements": 8388608,
+            "output_elements": 1048576,
+            "dtype": "BFloat16",
+            "calls_per_rank": [
+              256,
+              256,
+              256,
+              256,
+              256,
+              256,
+              256,
+              256
+            ],
+            "launch_geometry_counts": [
+              {
+                "grid": [
+                  4,
+                  1,
+                  1
+                ],
+                "block": [
+                  544,
+                  1,
+                  1
+                ],
+                "calls_per_rank": [
+                  256,
+                  256,
+                  256,
+                  256,
+                  256,
+                  256,
+                  256,
+                  256
+                ]
+              }
+            ],
+            "median_rank_kernel_ms": 155.17199549999998,
+            "median_rank_non_nccl_kernel_overlap_ms": 70.71588671875,
+            "median_rank_exposed_ms": 84.1243895429688,
+            "median_of_rank_call_medians_us": 440.85325
+          },
+          {
+            "kernel": "ncclDevKernel_SendRecv",
+            "collective": "SendRecv",
+            "owner": "ConsumerGemmRSFunction",
+            "input_elements": 7798784,
+            "output_elements": 7798784,
+            "dtype": "Byte",
+            "calls_per_rank": [
+              256,
+              256,
+              256,
+              256,
+              256,
+              256,
+              256,
+              256
+            ],
+            "launch_geometry_counts": [
+              {
+                "grid": [
+                  4,
+                  1,
+                  1
+                ],
+                "block": [
+                  640,
+                  1,
+                  1
+                ],
+                "calls_per_rank": [
+                  256,
+                  256,
+                  256,
+                  256,
+                  256,
+                  256,
+                  256,
+                  256
+                ]
+              }
+            ],
+            "median_rank_kernel_ms": 154.03086199999998,
+            "median_rank_non_nccl_kernel_overlap_ms": 0.0,
+            "median_rank_exposed_ms": 154.03086199999998,
+            "median_of_rank_call_medians_us": 423.4055
+          }
+        ],
+        "totals": {
+          "AllGather": {
+            "median_rank_calls": 524.0,
+            "median_rank_kernel_ms": 403.988519,
+            "median_rank_non_nccl_kernel_overlap_ms": 1.693716796875,
+            "median_rank_exposed_ms": 401.7811408261719
+          },
+          "ReduceScatter": {
+            "median_rank_calls": 260.0,
+            "median_rank_kernel_ms": 158.27501499999997,
+            "median_rank_non_nccl_kernel_overlap_ms": 72.7025751953125,
+            "median_rank_exposed_ms": 85.0278709570313
+          },
+          "AllReduce": {
+            "median_rank_calls": 19.0,
+            "median_rank_kernel_ms": 39.158184999999996,
+            "median_rank_non_nccl_kernel_overlap_ms": 0.0,
+            "median_rank_exposed_ms": 39.158184999999996
+          },
+          "SendRecv": {
+            "median_rank_calls": 256.0,
+            "median_rank_kernel_ms": 154.03086199999998,
+            "median_rank_non_nccl_kernel_overlap_ms": 0.0,
+            "median_rank_exposed_ms": 154.03086199999998
+          }
+        }
+      }
+    }
+  }
+}

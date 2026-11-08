@@ -1,0 +1,31 @@
+{
+  "source_repository": "COCCL_TACO",
+  "source_revision": "ca717e05b6dd6d21fff4d2617d209c95be63f3ef",
+  "discovery_ref": "origin/taco-new-feature",
+  "working_tree_branch": "main (unchanged)",
+  "extraction": "git show <revision>:<path>; source checkout was not modified",
+  "license": "BSD-3-Clause",
+  "codec": "H128 E4M3FN SATFINITE RNE, adaptive scaling, normalized Hadamard, two FP32 scales",
+  "files": {
+    "upstream/taco.cu": {
+      "source": "src/device/compress/taco/taco.cu",
+      "sha256": "15a9fa3b41f59333c03170a886d1c5d596415cebbc3642447cfcfdd93dffad8e"
+    },
+    "upstream/taco.h": {
+      "source": "src/device/compress/taco/taco.h",
+      "sha256": "f7c1a20cd0cad23fa99a40222d64d6f74fff21ff3e0255bfd4e6be3fd7d9084f"
+    },
+    "upstream/README.md": {
+      "source": "src/device/compress/taco/README.md",
+      "sha256": "fdb60fedad4db44043d33b3f564a2e22504cbb137dffea3b1b83cf04ef70de66"
+    },
+    "upstream/taco_RS.config": {
+      "source": "src/device/compress/configs/taco/taco_RS.config",
+      "sha256": "c5bef55bf028d4e9e4b11b3b580f0214b7d724105e385c9d1f0bb2f47b51f24d"
+    },
+    "LICENSE.txt": {
+      "source": "LICENSE.txt",
+      "sha256": "36e053d82c9ff1384a1045bb4cda1f5b569aa6a0e2faa1f9a42e16eb4c13ac78"
+    }
+  }
+}

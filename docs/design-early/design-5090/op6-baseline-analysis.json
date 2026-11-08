@@ -1,0 +1,849 @@
+{
+  "schema": "op6-op4-attention-submission-v1",
+  "source_batch": "Load-5090/SL3060/op4-nccl-channels-single-v1-1x-50steps-20261102-105103-438654",
+  "source_report_sha256": "1dac9e96c2d719a6f46ef0698fadc2fa2dfd9b48fe7585703987ca74754d2d17",
+  "historical_mean_ms": 832.2487896867096,
+  "candidate_gpu_measured": false,
+  "definition": {
+    "forward_scopes": [
+      "aten::baddbmm",
+      "MA11MaskedSoftmax",
+      "aten::bmm",
+      "context aten::contiguous"
+    ],
+    "backward_scopes": [
+      "BmmBackward0",
+      "MA11MaskedSoftmaxBackward",
+      "BaddbmmBackward0"
+    ],
+    "cpu_scope": "Union of selected scopes within one rank.",
+    "cpu_envelope": "Union of complete attention submission spans including gaps.",
+    "gpu_work": "Actual CUDA correlation-owned kernels, memcpy and memset, counted once.",
+    "aggregate": "Median of per-rank sums/unions, separately in each historical window."
+  },
+  "windows": [
+    {
+      "directory": "compare1/block00-candidate",
+      "formal_ms": 833.4861183352768,
+      "per_rank": [
+        {
+          "rank": 0,
+          "trace": "Load-5090/SL3060/op4-nccl-channels-single-v1-1x-50steps-20261102-105103-438654/compare1/block00-candidate/results/profile-op3-combined/rank0-profile.json.gz",
+          "sha256": "df9a9412a5dcc8ee97964235df0e2a2a762a5d2224e751ee2177b0284ff6e1c8",
+          "control_composed_profile_validated": true,
+          "cache_backward_allgathers": 0,
+          "zero_count_kernels": 2,
+          "softmax_kernels": 256,
+          "measurements": {
+            "forward": {
+              "calls": 128,
+              "selected_cpu_scope_sum_ms": 47.00523200000002,
+              "selected_cpu_scope_union_ms": 47.00523486328125,
+              "enclosing_cpu_span_union_ms": 65.590064453125,
+              "cuda_api_union_ms": 5.98185693359375,
+              "cuda_api_calls": 896,
+              "gpu_work_ms": 15.782361000000002,
+              "gpu_kernel_work_ms": 15.782361000000002,
+              "gpu_work_union_ms": 15.78236279296875,
+              "gpu_kernel_calls": 512,
+              "gpu_memset_calls": 0,
+              "gpu_memcpy_calls": 0
+            },
+            "backward": {
+              "calls": 128,
+              "selected_cpu_scope_sum_ms": 56.37043999999998,
+              "selected_cpu_scope_union_ms": 56.37044140625,
+              "enclosing_cpu_span_union_ms": 71.5559140625,
+              "cuda_api_union_ms": 7.47968359375,
+              "cuda_api_calls": 1536,
+              "gpu_work_ms": 27.186497000000013,
+              "gpu_kernel_work_ms": 27.186497000000013,
+              "gpu_work_union_ms": 27.1864912109375,
+              "gpu_kernel_calls": 896,
+              "gpu_memset_calls": 0,
+              "gpu_memcpy_calls": 0
+            },
+            "combined": {
+              "selected_cpu_scope_union_ms": 103.37567626953125,
+              "enclosing_cpu_span_union_ms": 137.145978515625,
+              "cuda_api_union_ms": 13.46154052734375,
+              "gpu_work_ms": 42.96885799999991,
+              "gpu_work_union_ms": 42.96885400390625
+            }
+          }
+        },
+        {
+          "rank": 1,
+          "trace": "Load-5090/SL3060/op4-nccl-channels-single-v1-1x-50steps-20261102-105103-438654/compare1/block00-candidate/results/profile-op3-combined/rank1-profile.json.gz",
+          "sha256": "9b7bf19a4096291aad4aa849da2fd1eae14fab07882c57f396408b6e1873c933",
+          "control_composed_profile_validated": true,
+          "cache_backward_allgathers": 0,
+          "zero_count_kernels": 2,
+          "softmax_kernels": 256,
+          "measurements": {
+            "forward": {
+              "calls": 128,
+              "selected_cpu_scope_sum_ms": 47.85233300000001,
+              "selected_cpu_scope_union_ms": 47.85233837890625,
+              "enclosing_cpu_span_union_ms": 66.49881591796876,
+              "cuda_api_union_ms": 5.9017783203125,
+              "cuda_api_calls": 896,
+              "gpu_work_ms": 16.060847999999993,
+              "gpu_kernel_work_ms": 16.060847999999993,
+              "gpu_work_union_ms": 16.0608525390625,
+              "gpu_kernel_calls": 512,
+              "gpu_memset_calls": 0,
+              "gpu_memcpy_calls": 0
+            },
+            "backward": {
+              "calls": 128,
+              "selected_cpu_scope_sum_ms": 61.969013,
+              "selected_cpu_scope_union_ms": 61.96901513671875,
+              "enclosing_cpu_span_union_ms": 78.94096923828126,
+              "cuda_api_union_ms": 9.67652099609375,
+              "cuda_api_calls": 1536,
+              "gpu_work_ms": 27.40145099999998,
+              "gpu_kernel_work_ms": 27.40145099999998,
+              "gpu_work_union_ms": 27.40144287109375,
+              "gpu_kernel_calls": 896,
+              "gpu_memset_calls": 0,
+              "gpu_memcpy_calls": 0
+            },
+            "combined": {
+              "selected_cpu_scope_union_ms": 109.821353515625,
+              "enclosing_cpu_span_union_ms": 145.43978515625,
+              "cuda_api_union_ms": 15.57829931640625,
+              "gpu_work_ms": 43.46229900000001,
+              "gpu_work_union_ms": 43.46229541015625
+            }
+          }
+        },
+        {
+          "rank": 2,
+          "trace": "Load-5090/SL3060/op4-nccl-channels-single-v1-1x-50steps-20261102-105103-438654/compare1/block00-candidate/results/profile-op3-combined/rank2-profile.json.gz",
+          "sha256": "7208f975be78744da719b0217bb651557e826020051c4bb62a0ea467098f1309",
+          "control_composed_profile_validated": true,
+          "cache_backward_allgathers": 0,
+          "zero_count_kernels": 2,
+          "softmax_kernels": 256,
+          "measurements": {
+            "forward": {
+              "calls": 128,
+              "selected_cpu_scope_sum_ms": 48.10456400000004,
+              "selected_cpu_scope_union_ms": 48.104560546875,
+              "enclosing_cpu_span_union_ms": 66.7594208984375,
+              "cuda_api_union_ms": 5.921966796875,
+              "cuda_api_calls": 896,
+              "gpu_work_ms": 22.380606000000025,
+              "gpu_kernel_work_ms": 22.380606000000025,
+              "gpu_work_union_ms": 22.38059765625,
+              "gpu_kernel_calls": 512,
+              "gpu_memset_calls": 0,
+              "gpu_memcpy_calls": 0
+            },
+            "backward": {
+              "calls": 128,
+              "selected_cpu_scope_sum_ms": 60.914896999999996,
+              "selected_cpu_scope_union_ms": 60.91489990234375,
+              "enclosing_cpu_span_union_ms": 77.6919111328125,
+              "cuda_api_union_ms": 8.20351171875,
+              "cuda_api_calls": 1536,
+              "gpu_work_ms": 38.64263699999997,
+              "gpu_kernel_work_ms": 38.64263699999997,
+              "gpu_work_union_ms": 38.6426279296875,
+              "gpu_kernel_calls": 896,
+              "gpu_memset_calls": 0,
+              "gpu_memcpy_calls": 0
+            },
+            "combined": {
+              "selected_cpu_scope_union_ms": 109.01946044921876,
+              "enclosing_cpu_span_union_ms": 144.45133203125,
+              "cuda_api_union_ms": 14.125478515625,
+              "gpu_work_ms": 61.02324300000006,
+              "gpu_work_union_ms": 61.0232255859375
+            }
+          }
+        },
+        {
+          "rank": 3,
+          "trace": "Load-5090/SL3060/op4-nccl-channels-single-v1-1x-50steps-20261102-105103-438654/compare1/block00-candidate/results/profile-op3-combined/rank3-profile.json.gz",
+          "sha256": "7756633fd73904ca5b700a9c48b1010cc21c668ba610e5d3bfcbe5f25a0dca15",
+          "control_composed_profile_validated": true,
+          "cache_backward_allgathers": 0,
+          "zero_count_kernels": 2,
+          "softmax_kernels": 256,
+          "measurements": {
+            "forward": {
+              "calls": 128,
+              "selected_cpu_scope_sum_ms": 48.434106999999976,
+              "selected_cpu_scope_union_ms": 48.43410498046875,
+              "enclosing_cpu_span_union_ms": 66.98268017578125,
+              "cuda_api_union_ms": 6.24739208984375,
+              "cuda_api_calls": 896,
+              "gpu_work_ms": 22.28077600000001,
+              "gpu_kernel_work_ms": 22.28077600000001,
+              "gpu_work_union_ms": 22.28077001953125,
+              "gpu_kernel_calls": 512,
+              "gpu_memset_calls": 0,
+              "gpu_memcpy_calls": 0
+            },
+            "backward": {
+              "calls": 128,
+              "selected_cpu_scope_sum_ms": 62.47273199999996,
+              "selected_cpu_scope_union_ms": 62.47273291015625,
+              "enclosing_cpu_span_union_ms": 79.2358115234375,
+              "cuda_api_union_ms": 8.66694384765625,
+              "cuda_api_calls": 1536,
+              "gpu_work_ms": 38.50307500000001,
+              "gpu_kernel_work_ms": 38.50307500000001,
+              "gpu_work_union_ms": 38.503072265625,
+              "gpu_kernel_calls": 896,
+              "gpu_memset_calls": 0,
+              "gpu_memcpy_calls": 0
+            },
+            "combined": {
+              "selected_cpu_scope_union_ms": 110.906837890625,
+              "enclosing_cpu_span_union_ms": 146.21849169921876,
+              "cuda_api_union_ms": 14.9143359375,
+              "gpu_work_ms": 60.78385100000016,
+              "gpu_work_union_ms": 60.78384228515625
+            }
+          }
+        },
+        {
+          "rank": 4,
+          "trace": "Load-5090/SL3060/op4-nccl-channels-single-v1-1x-50steps-20261102-105103-438654/compare1/block00-candidate/results/profile-op3-combined/rank4-profile.json.gz",
+          "sha256": "fe03c25f0394b8c430069895b6168a372e5d0767a34f54bd99fb689b651b970e",
+          "control_composed_profile_validated": true,
+          "cache_backward_allgathers": 0,
+          "zero_count_kernels": 2,
+          "softmax_kernels": 256,
+          "measurements": {
+            "forward": {
+              "calls": 128,
+              "selected_cpu_scope_sum_ms": 48.400998000000016,
+              "selected_cpu_scope_union_ms": 48.401,
+              "enclosing_cpu_span_union_ms": 67.11975634765625,
+              "cuda_api_union_ms": 6.3813154296875,
+              "cuda_api_calls": 896,
+              "gpu_work_ms": 22.807931000000025,
+              "gpu_kernel_work_ms": 22.807931000000025,
+              "gpu_work_union_ms": 22.80792431640625,
+              "gpu_kernel_calls": 512,
+              "gpu_memset_calls": 0,
+              "gpu_memcpy_calls": 0
+            },
+            "backward": {
+              "calls": 128,
+              "selected_cpu_scope_sum_ms": 61.87384899999997,
+              "selected_cpu_scope_union_ms": 61.873845703125,
+              "enclosing_cpu_span_union_ms": 78.54822998046875,
+              "cuda_api_union_ms": 8.83347802734375,
+              "cuda_api_calls": 1536,
+              "gpu_work_ms": 39.150920000000006,
+              "gpu_kernel_work_ms": 39.150920000000006,
+              "gpu_work_union_ms": 39.150912109375,
+              "gpu_kernel_calls": 896,
+              "gpu_memset_calls": 0,
+              "gpu_memcpy_calls": 0
+            },
+            "combined": {
+              "selected_cpu_scope_union_ms": 110.274845703125,
+              "enclosing_cpu_span_union_ms": 145.667986328125,
+              "cuda_api_union_ms": 15.21479345703125,
+              "gpu_work_ms": 61.95885100000013,
+              "gpu_work_union_ms": 61.95883642578125
+            }
+          }
+        },
+        {
+          "rank": 5,
+          "trace": "Load-5090/SL3060/op4-nccl-channels-single-v1-1x-50steps-20261102-105103-438654/compare1/block00-candidate/results/profile-op3-combined/rank5-profile.json.gz",
+          "sha256": "244c404db101b98c6023e8ef19737e8b48793b7adab484da636f78f11a5b05eb",
+          "control_composed_profile_validated": true,
+          "cache_backward_allgathers": 0,
+          "zero_count_kernels": 2,
+          "softmax_kernels": 256,
+          "measurements": {
+            "forward": {
+              "calls": 128,
+              "selected_cpu_scope_sum_ms": 47.99373399999997,
+              "selected_cpu_scope_union_ms": 47.99373779296875,
+              "enclosing_cpu_span_union_ms": 66.623244140625,
+              "cuda_api_union_ms": 6.4750966796875,
+              "cuda_api_calls": 896,
+              "gpu_work_ms": 23.09420799999999,
+              "gpu_kernel_work_ms": 23.09420799999999,
+              "gpu_work_union_ms": 23.09420068359375,
+              "gpu_kernel_calls": 512,
+              "gpu_memset_calls": 0,
+              "gpu_memcpy_calls": 0
+            },
+            "backward": {
+              "calls": 128,
+              "selected_cpu_scope_sum_ms": 63.434906,
+              "selected_cpu_scope_union_ms": 63.4349052734375,
+              "enclosing_cpu_span_union_ms": 80.38647998046875,
+              "cuda_api_union_ms": 9.12298681640625,
+              "cuda_api_calls": 1536,
+              "gpu_work_ms": 39.13513499999994,
+              "gpu_kernel_work_ms": 39.13513499999994,
+              "gpu_work_union_ms": 39.13513330078125,
+              "gpu_kernel_calls": 896,
+              "gpu_memset_calls": 0,
+              "gpu_memcpy_calls": 0
+            },
+            "combined": {
+              "selected_cpu_scope_union_ms": 111.42864306640625,
+              "enclosing_cpu_span_union_ms": 147.00972412109374,
+              "cuda_api_union_ms": 15.59808349609375,
+              "gpu_work_ms": 62.22934300000007,
+              "gpu_work_union_ms": 62.229333984375
+            }
+          }
+        },
+        {
+          "rank": 6,
+          "trace": "Load-5090/SL3060/op4-nccl-channels-single-v1-1x-50steps-20261102-105103-438654/compare1/block00-candidate/results/profile-op3-combined/rank6-profile.json.gz",
+          "sha256": "bc0bee90f1cd77b8356ea413e4677d154308e7dce09eed55b0e08454c86901f0",
+          "control_composed_profile_validated": true,
+          "cache_backward_allgathers": 0,
+          "zero_count_kernels": 2,
+          "softmax_kernels": 256,
+          "measurements": {
+            "forward": {
+              "calls": 128,
+              "selected_cpu_scope_sum_ms": 48.91405199999998,
+              "selected_cpu_scope_union_ms": 48.9140537109375,
+              "enclosing_cpu_span_union_ms": 67.51003857421875,
+              "cuda_api_union_ms": 6.30267578125,
+              "cuda_api_calls": 896,
+              "gpu_work_ms": 22.74815400000002,
+              "gpu_kernel_work_ms": 22.74815400000002,
+              "gpu_work_union_ms": 22.74815625,
+              "gpu_kernel_calls": 512,
+              "gpu_memset_calls": 0,
+              "gpu_memcpy_calls": 0
+            },
+            "backward": {
+              "calls": 128,
+              "selected_cpu_scope_sum_ms": 63.465126999999995,
+              "selected_cpu_scope_union_ms": 63.465126953125,
+              "enclosing_cpu_span_union_ms": 80.0436708984375,
+              "cuda_api_union_ms": 8.847810546875,
+              "cuda_api_calls": 1536,
+              "gpu_work_ms": 38.75855000000001,
+              "gpu_kernel_work_ms": 38.75855000000001,
+              "gpu_work_union_ms": 38.7585439453125,
+              "gpu_kernel_calls": 896,
+              "gpu_memset_calls": 0,
+              "gpu_memcpy_calls": 0
+            },
+            "combined": {
+              "selected_cpu_scope_union_ms": 112.3791806640625,
+              "enclosing_cpu_span_union_ms": 147.55370947265624,
+              "cuda_api_union_ms": 15.150486328125,
+              "gpu_work_ms": 61.50670400000001,
+              "gpu_work_union_ms": 61.5067001953125
+            }
+          }
+        },
+        {
+          "rank": 7,
+          "trace": "Load-5090/SL3060/op4-nccl-channels-single-v1-1x-50steps-20261102-105103-438654/compare1/block00-candidate/results/profile-op3-combined/rank7-profile.json.gz",
+          "sha256": "1a1b3d329df0693088778841e2bf7f5b60b945580f733821823adaa528367339",
+          "control_composed_profile_validated": true,
+          "cache_backward_allgathers": 0,
+          "zero_count_kernels": 2,
+          "softmax_kernels": 256,
+          "measurements": {
+            "forward": {
+              "calls": 128,
+              "selected_cpu_scope_sum_ms": 53.950859999999984,
+              "selected_cpu_scope_union_ms": 53.95086181640625,
+              "enclosing_cpu_span_union_ms": 72.96499462890625,
+              "cuda_api_union_ms": 6.11800732421875,
+              "cuda_api_calls": 896,
+              "gpu_work_ms": 15.637460000000004,
+              "gpu_kernel_work_ms": 15.637460000000004,
+              "gpu_work_union_ms": 15.63745703125,
+              "gpu_kernel_calls": 512,
+              "gpu_memset_calls": 0,
+              "gpu_memcpy_calls": 0
+            },
+            "backward": {
+              "calls": 128,
+              "selected_cpu_scope_sum_ms": 61.04343800000003,
+              "selected_cpu_scope_union_ms": 61.04343603515625,
+              "enclosing_cpu_span_union_ms": 77.79271533203125,
+              "cuda_api_union_ms": 8.57730322265625,
+              "cuda_api_calls": 1536,
+              "gpu_work_ms": 27.210674999999977,
+              "gpu_kernel_work_ms": 27.210674999999977,
+              "gpu_work_union_ms": 27.21067529296875,
+              "gpu_kernel_calls": 896,
+              "gpu_memset_calls": 0,
+              "gpu_memcpy_calls": 0
+            },
+            "combined": {
+              "selected_cpu_scope_union_ms": 114.9942978515625,
+              "enclosing_cpu_span_union_ms": 150.7577099609375,
+              "cuda_api_union_ms": 14.695310546875,
+              "gpu_work_ms": 42.84813499999995,
+              "gpu_work_union_ms": 42.84813232421875
+            }
+          }
+        }
+      ],
+      "median_over_ranks": {
+        "forward": {
+          "calls": 128.0,
+          "selected_cpu_scope_sum_ms": 48.25278100000003,
+          "selected_cpu_scope_union_ms": 48.2527802734375,
+          "enclosing_cpu_span_union_ms": 66.87105053710937,
+          "cuda_api_union_ms": 6.18269970703125,
+          "cuda_api_calls": 896.0,
+          "gpu_work_ms": 22.330691000000016,
+          "gpu_kernel_work_ms": 22.330691000000016,
+          "gpu_work_union_ms": 22.330683837890625,
+          "gpu_kernel_calls": 512.0,
+          "gpu_memset_calls": 0.0,
+          "gpu_memcpy_calls": 0.0
+        },
+        "backward": {
+          "calls": 128.0,
+          "selected_cpu_scope_sum_ms": 61.921430999999984,
+          "selected_cpu_scope_union_ms": 61.921430419921876,
+          "enclosing_cpu_span_union_ms": 78.744599609375,
+          "cuda_api_union_ms": 8.7502109375,
+          "cuda_api_calls": 1536.0,
+          "gpu_work_ms": 38.57285599999999,
+          "gpu_kernel_work_ms": 38.57285599999999,
+          "gpu_work_union_ms": 38.57285009765625,
+          "gpu_kernel_calls": 896.0,
+          "gpu_memset_calls": 0.0,
+          "gpu_memcpy_calls": 0.0
+        },
+        "combined": {
+          "selected_cpu_scope_union_ms": 110.590841796875,
+          "enclosing_cpu_span_union_ms": 145.94323901367187,
+          "cuda_api_union_ms": 15.0324111328125,
+          "gpu_work_ms": 60.90354700000011,
+          "gpu_work_union_ms": 60.903533935546875
+        }
+      }
+    },
+    {
+      "directory": "compare1/block01-candidate",
+      "formal_ms": 831.0114610381424,
+      "per_rank": [
+        {
+          "rank": 0,
+          "trace": "Load-5090/SL3060/op4-nccl-channels-single-v1-1x-50steps-20261102-105103-438654/compare1/block01-candidate/results/profile-op3-combined/rank0-profile.json.gz",
+          "sha256": "8ee25d9fb0731d7551ea62dd869826437dcf10775bca17c10423c39bc4f9c4a4",
+          "control_composed_profile_validated": true,
+          "cache_backward_allgathers": 0,
+          "zero_count_kernels": 2,
+          "softmax_kernels": 256,
+          "measurements": {
+            "forward": {
+              "calls": 128,
+              "selected_cpu_scope_sum_ms": 46.98113600000005,
+              "selected_cpu_scope_union_ms": 46.98114013671875,
+              "enclosing_cpu_span_union_ms": 66.2224775390625,
+              "cuda_api_union_ms": 5.793494140625,
+              "cuda_api_calls": 896,
+              "gpu_work_ms": 15.810197999999994,
+              "gpu_kernel_work_ms": 15.810197999999994,
+              "gpu_work_union_ms": 15.81020068359375,
+              "gpu_kernel_calls": 512,
+              "gpu_memset_calls": 0,
+              "gpu_memcpy_calls": 0
+            },
+            "backward": {
+              "calls": 128,
+              "selected_cpu_scope_sum_ms": 62.075599000000004,
+              "selected_cpu_scope_union_ms": 62.07559423828125,
+              "enclosing_cpu_span_union_ms": 79.04633935546875,
+              "cuda_api_union_ms": 8.95866650390625,
+              "cuda_api_calls": 1536,
+              "gpu_work_ms": 27.169163999999974,
+              "gpu_kernel_work_ms": 27.169163999999974,
+              "gpu_work_union_ms": 27.1691591796875,
+              "gpu_kernel_calls": 896,
+              "gpu_memset_calls": 0,
+              "gpu_memcpy_calls": 0
+            },
+            "combined": {
+              "selected_cpu_scope_union_ms": 109.056734375,
+              "enclosing_cpu_span_union_ms": 145.26881689453126,
+              "cuda_api_union_ms": 14.75216064453125,
+              "gpu_work_ms": 42.97936199999998,
+              "gpu_work_union_ms": 42.97935986328125
+            }
+          }
+        },
+        {
+          "rank": 1,
+          "trace": "Load-5090/SL3060/op4-nccl-channels-single-v1-1x-50steps-20261102-105103-438654/compare1/block01-candidate/results/profile-op3-combined/rank1-profile.json.gz",
+          "sha256": "619823cadfef28bee5ca5c6883a7bdb153a259b1aad5e8968f3ac98c1e0aeb0b",
+          "control_composed_profile_validated": true,
+          "cache_backward_allgathers": 0,
+          "zero_count_kernels": 2,
+          "softmax_kernels": 256,
+          "measurements": {
+            "forward": {
+              "calls": 128,
+              "selected_cpu_scope_sum_ms": 47.38870500000003,
+              "selected_cpu_scope_union_ms": 47.3887021484375,
+              "enclosing_cpu_span_union_ms": 65.30972216796874,
+              "cuda_api_union_ms": 6.27806298828125,
+              "cuda_api_calls": 896,
+              "gpu_work_ms": 15.96807099999999,
+              "gpu_kernel_work_ms": 15.96807099999999,
+              "gpu_work_union_ms": 15.96807373046875,
+              "gpu_kernel_calls": 512,
+              "gpu_memset_calls": 0,
+              "gpu_memcpy_calls": 0
+            },
+            "backward": {
+              "calls": 128,
+              "selected_cpu_scope_sum_ms": 61.86978000000003,
+              "selected_cpu_scope_union_ms": 61.86978369140625,
+              "enclosing_cpu_span_union_ms": 78.17393505859376,
+              "cuda_api_union_ms": 8.7431064453125,
+              "cuda_api_calls": 1536,
+              "gpu_work_ms": 27.41877500000003,
+              "gpu_kernel_work_ms": 27.41877500000003,
+              "gpu_work_union_ms": 27.41877197265625,
+              "gpu_kernel_calls": 896,
+              "gpu_memset_calls": 0,
+              "gpu_memcpy_calls": 0
+            },
+            "combined": {
+              "selected_cpu_scope_union_ms": 109.25848583984374,
+              "enclosing_cpu_span_union_ms": 143.4836572265625,
+              "cuda_api_union_ms": 15.02116943359375,
+              "gpu_work_ms": 43.38684599999992,
+              "gpu_work_union_ms": 43.386845703125
+            }
+          }
+        },
+        {
+          "rank": 2,
+          "trace": "Load-5090/SL3060/op4-nccl-channels-single-v1-1x-50steps-20261102-105103-438654/compare1/block01-candidate/results/profile-op3-combined/rank2-profile.json.gz",
+          "sha256": "a7cbb305660797ad2c651416419ec76cad512687adf8f85f425c7cbf379a34d6",
+          "control_composed_profile_validated": true,
+          "cache_backward_allgathers": 0,
+          "zero_count_kernels": 2,
+          "softmax_kernels": 256,
+          "measurements": {
+            "forward": {
+              "calls": 128,
+              "selected_cpu_scope_sum_ms": 49.137749000000014,
+              "selected_cpu_scope_union_ms": 49.13774951171875,
+              "enclosing_cpu_span_union_ms": 67.72499169921875,
+              "cuda_api_union_ms": 6.28607177734375,
+              "cuda_api_calls": 896,
+              "gpu_work_ms": 22.483906999999984,
+              "gpu_kernel_work_ms": 22.483906999999984,
+              "gpu_work_union_ms": 22.48390478515625,
+              "gpu_kernel_calls": 512,
+              "gpu_memset_calls": 0,
+              "gpu_memcpy_calls": 0
+            },
+            "backward": {
+              "calls": 128,
+              "selected_cpu_scope_sum_ms": 64.26766699999992,
+              "selected_cpu_scope_union_ms": 64.26766748046875,
+              "enclosing_cpu_span_union_ms": 81.8307109375,
+              "cuda_api_union_ms": 8.66813134765625,
+              "cuda_api_calls": 1536,
+              "gpu_work_ms": 38.576929999999976,
+              "gpu_kernel_work_ms": 38.576929999999976,
+              "gpu_work_union_ms": 38.57692333984375,
+              "gpu_kernel_calls": 896,
+              "gpu_memset_calls": 0,
+              "gpu_memcpy_calls": 0
+            },
+            "combined": {
+              "selected_cpu_scope_union_ms": 113.4054169921875,
+              "enclosing_cpu_span_union_ms": 149.55570263671876,
+              "cuda_api_union_ms": 14.954203125,
+              "gpu_work_ms": 61.060836999999964,
+              "gpu_work_union_ms": 61.060828125
+            }
+          }
+        },
+        {
+          "rank": 3,
+          "trace": "Load-5090/SL3060/op4-nccl-channels-single-v1-1x-50steps-20261102-105103-438654/compare1/block01-candidate/results/profile-op3-combined/rank3-profile.json.gz",
+          "sha256": "dd8a61a65e99af86b038321276737698c7612fefcf026de90808237a009bb26a",
+          "control_composed_profile_validated": true,
+          "cache_backward_allgathers": 0,
+          "zero_count_kernels": 2,
+          "softmax_kernels": 256,
+          "measurements": {
+            "forward": {
+              "calls": 128,
+              "selected_cpu_scope_sum_ms": 48.19875299999996,
+              "selected_cpu_scope_union_ms": 48.198755859375,
+              "enclosing_cpu_span_union_ms": 66.92893505859375,
+              "cuda_api_union_ms": 6.221767578125,
+              "cuda_api_calls": 896,
+              "gpu_work_ms": 22.510444000000025,
+              "gpu_kernel_work_ms": 22.510444000000025,
+              "gpu_work_union_ms": 22.51043701171875,
+              "gpu_kernel_calls": 512,
+              "gpu_memset_calls": 0,
+              "gpu_memcpy_calls": 0
+            },
+            "backward": {
+              "calls": 128,
+              "selected_cpu_scope_sum_ms": 62.40403400000002,
+              "selected_cpu_scope_union_ms": 62.40403564453125,
+              "enclosing_cpu_span_union_ms": 79.3308134765625,
+              "cuda_api_union_ms": 8.62301953125,
+              "cuda_api_calls": 1536,
+              "gpu_work_ms": 38.71067299999999,
+              "gpu_kernel_work_ms": 38.71067299999999,
+              "gpu_work_union_ms": 38.71066845703125,
+              "gpu_kernel_calls": 896,
+              "gpu_memset_calls": 0,
+              "gpu_memcpy_calls": 0
+            },
+            "combined": {
+              "selected_cpu_scope_union_ms": 110.60279150390625,
+              "enclosing_cpu_span_union_ms": 146.25974853515626,
+              "cuda_api_union_ms": 14.844787109375,
+              "gpu_work_ms": 61.22111700000016,
+              "gpu_work_union_ms": 61.22110546875
+            }
+          }
+        },
+        {
+          "rank": 4,
+          "trace": "Load-5090/SL3060/op4-nccl-channels-single-v1-1x-50steps-20261102-105103-438654/compare1/block01-candidate/results/profile-op3-combined/rank4-profile.json.gz",
+          "sha256": "d184459cab51e39f9fe877045fe6c3e96ee9c74483eaa038f69921500bb2eb31",
+          "control_composed_profile_validated": true,
+          "cache_backward_allgathers": 0,
+          "zero_count_kernels": 2,
+          "softmax_kernels": 256,
+          "measurements": {
+            "forward": {
+              "calls": 128,
+              "selected_cpu_scope_sum_ms": 47.708445000000005,
+              "selected_cpu_scope_union_ms": 47.70844873046875,
+              "enclosing_cpu_span_union_ms": 65.86241845703125,
+              "cuda_api_union_ms": 6.00260546875,
+              "cuda_api_calls": 896,
+              "gpu_work_ms": 22.756200000000003,
+              "gpu_kernel_work_ms": 22.756200000000003,
+              "gpu_work_union_ms": 22.7561943359375,
+              "gpu_kernel_calls": 512,
+              "gpu_memset_calls": 0,
+              "gpu_memcpy_calls": 0
+            },
+            "backward": {
+              "calls": 128,
+              "selected_cpu_scope_sum_ms": 61.86233200000004,
+              "selected_cpu_scope_union_ms": 61.86233056640625,
+              "enclosing_cpu_span_union_ms": 79.040013671875,
+              "cuda_api_union_ms": 8.12018603515625,
+              "cuda_api_calls": 1536,
+              "gpu_work_ms": 39.14190100000001,
+              "gpu_kernel_work_ms": 39.14190100000001,
+              "gpu_work_union_ms": 39.14187890625,
+              "gpu_kernel_calls": 896,
+              "gpu_memset_calls": 0,
+              "gpu_memcpy_calls": 0
+            },
+            "combined": {
+              "selected_cpu_scope_union_ms": 109.570779296875,
+              "enclosing_cpu_span_union_ms": 144.90243212890624,
+              "cuda_api_union_ms": 14.12279150390625,
+              "gpu_work_ms": 61.8981010000002,
+              "gpu_work_union_ms": 61.8980732421875
+            }
+          }
+        },
+        {
+          "rank": 5,
+          "trace": "Load-5090/SL3060/op4-nccl-channels-single-v1-1x-50steps-20261102-105103-438654/compare1/block01-candidate/results/profile-op3-combined/rank5-profile.json.gz",
+          "sha256": "14104dc89a9c9eb34692a8ca701672635dcd46e9286bb3aeb0754716dab92336",
+          "control_composed_profile_validated": true,
+          "cache_backward_allgathers": 0,
+          "zero_count_kernels": 2,
+          "softmax_kernels": 256,
+          "measurements": {
+            "forward": {
+              "calls": 128,
+              "selected_cpu_scope_sum_ms": 46.184346999999995,
+              "selected_cpu_scope_union_ms": 46.18435009765625,
+              "enclosing_cpu_span_union_ms": 64.03244091796876,
+              "cuda_api_union_ms": 6.0440341796875,
+              "cuda_api_calls": 896,
+              "gpu_work_ms": 22.772010000000005,
+              "gpu_kernel_work_ms": 22.772010000000005,
+              "gpu_work_union_ms": 22.77200341796875,
+              "gpu_kernel_calls": 512,
+              "gpu_memset_calls": 0,
+              "gpu_memcpy_calls": 0
+            },
+            "backward": {
+              "calls": 128,
+              "selected_cpu_scope_sum_ms": 61.91164500000005,
+              "selected_cpu_scope_union_ms": 61.9116455078125,
+              "enclosing_cpu_span_union_ms": 78.32627734375,
+              "cuda_api_union_ms": 8.79914306640625,
+              "cuda_api_calls": 1536,
+              "gpu_work_ms": 39.15850600000004,
+              "gpu_kernel_work_ms": 39.15850600000004,
+              "gpu_work_union_ms": 39.15850244140625,
+              "gpu_kernel_calls": 896,
+              "gpu_memset_calls": 0,
+              "gpu_memcpy_calls": 0
+            },
+            "combined": {
+              "selected_cpu_scope_union_ms": 108.09599560546874,
+              "enclosing_cpu_span_union_ms": 142.35871826171876,
+              "cuda_api_union_ms": 14.84317724609375,
+              "gpu_work_ms": 61.9305160000001,
+              "gpu_work_union_ms": 61.930505859375
+            }
+          }
+        },
+        {
+          "rank": 6,
+          "trace": "Load-5090/SL3060/op4-nccl-channels-single-v1-1x-50steps-20261102-105103-438654/compare1/block01-candidate/results/profile-op3-combined/rank6-profile.json.gz",
+          "sha256": "7b3f2160532293b4989093ff0a039036baa86f3d9e499a89dbe9832696760bc5",
+          "control_composed_profile_validated": true,
+          "cache_backward_allgathers": 0,
+          "zero_count_kernels": 2,
+          "softmax_kernels": 256,
+          "measurements": {
+            "forward": {
+              "calls": 128,
+              "selected_cpu_scope_sum_ms": 51.49146499999996,
+              "selected_cpu_scope_union_ms": 51.49146142578125,
+              "enclosing_cpu_span_union_ms": 70.06213916015625,
+              "cuda_api_union_ms": 9.65831689453125,
+              "cuda_api_calls": 896,
+              "gpu_work_ms": 22.868908999999967,
+              "gpu_kernel_work_ms": 22.868908999999967,
+              "gpu_work_union_ms": 22.86890771484375,
+              "gpu_kernel_calls": 512,
+              "gpu_memset_calls": 0,
+              "gpu_memcpy_calls": 0
+            },
+            "backward": {
+              "calls": 128,
+              "selected_cpu_scope_sum_ms": 63.34885500000001,
+              "selected_cpu_scope_union_ms": 63.34885302734375,
+              "enclosing_cpu_span_union_ms": 80.64270947265625,
+              "cuda_api_union_ms": 9.0185029296875,
+              "cuda_api_calls": 1536,
+              "gpu_work_ms": 38.900116000000025,
+              "gpu_kernel_work_ms": 38.900116000000025,
+              "gpu_work_union_ms": 38.9001005859375,
+              "gpu_kernel_calls": 896,
+              "gpu_memset_calls": 0,
+              "gpu_memcpy_calls": 0
+            },
+            "combined": {
+              "selected_cpu_scope_union_ms": 114.840314453125,
+              "enclosing_cpu_span_union_ms": 150.7048486328125,
+              "cuda_api_union_ms": 18.67681982421875,
+              "gpu_work_ms": 61.76902500000015,
+              "gpu_work_union_ms": 61.76900830078125
+            }
+          }
+        },
+        {
+          "rank": 7,
+          "trace": "Load-5090/SL3060/op4-nccl-channels-single-v1-1x-50steps-20261102-105103-438654/compare1/block01-candidate/results/profile-op3-combined/rank7-profile.json.gz",
+          "sha256": "911cd2c82eab56d5cb68360c1e266b67a0c19783ea8a3bd8ee797a53673973e6",
+          "control_composed_profile_validated": true,
+          "cache_backward_allgathers": 0,
+          "zero_count_kernels": 2,
+          "softmax_kernels": 256,
+          "measurements": {
+            "forward": {
+              "calls": 128,
+              "selected_cpu_scope_sum_ms": 49.03682899999996,
+              "selected_cpu_scope_union_ms": 49.03682275390625,
+              "enclosing_cpu_span_union_ms": 67.76155712890625,
+              "cuda_api_union_ms": 6.55218310546875,
+              "cuda_api_calls": 896,
+              "gpu_work_ms": 15.975172000000002,
+              "gpu_kernel_work_ms": 15.975172000000002,
+              "gpu_work_union_ms": 15.975169921875,
+              "gpu_kernel_calls": 512,
+              "gpu_memset_calls": 0,
+              "gpu_memcpy_calls": 0
+            },
+            "backward": {
+              "calls": 128,
+              "selected_cpu_scope_sum_ms": 62.61157899999996,
+              "selected_cpu_scope_union_ms": 62.611578125,
+              "enclosing_cpu_span_union_ms": 79.40827001953124,
+              "cuda_api_union_ms": 9.077943359375,
+              "cuda_api_calls": 1536,
+              "gpu_work_ms": 27.30765300000003,
+              "gpu_kernel_work_ms": 27.30765300000003,
+              "gpu_work_union_ms": 27.307642578125,
+              "gpu_kernel_calls": 896,
+              "gpu_memset_calls": 0,
+              "gpu_memcpy_calls": 0
+            },
+            "combined": {
+              "selected_cpu_scope_union_ms": 111.64840087890624,
+              "enclosing_cpu_span_union_ms": 147.1698271484375,
+              "cuda_api_union_ms": 15.63012646484375,
+              "gpu_work_ms": 43.28282499999996,
+              "gpu_work_union_ms": 43.2828125
+            }
+          }
+        }
+      ],
+      "median_over_ranks": {
+        "forward": {
+          "calls": 128.0,
+          "selected_cpu_scope_sum_ms": 47.95359899999998,
+          "selected_cpu_scope_union_ms": 47.95360229492188,
+          "enclosing_cpu_span_union_ms": 66.57570629882812,
+          "cuda_api_union_ms": 6.249915283203125,
+          "cuda_api_calls": 896.0,
+          "gpu_work_ms": 22.497175500000004,
+          "gpu_kernel_work_ms": 22.497175500000004,
+          "gpu_work_union_ms": 22.4971708984375,
+          "gpu_kernel_calls": 512.0,
+          "gpu_memset_calls": 0.0,
+          "gpu_memcpy_calls": 0.0
+        },
+        "backward": {
+          "calls": 128.0,
+          "selected_cpu_scope_sum_ms": 62.23981650000001,
+          "selected_cpu_scope_union_ms": 62.23981494140625,
+          "enclosing_cpu_span_union_ms": 79.18857641601562,
+          "cuda_api_union_ms": 8.771124755859375,
+          "cuda_api_calls": 1536.0,
+          "gpu_work_ms": 38.64380149999998,
+          "gpu_kernel_work_ms": 38.64380149999998,
+          "gpu_work_union_ms": 38.6437958984375,
+          "gpu_kernel_calls": 896.0,
+          "gpu_memset_calls": 0.0,
+          "gpu_memcpy_calls": 0.0
+        },
+        "combined": {
+          "selected_cpu_scope_union_ms": 110.08678540039062,
+          "enclosing_cpu_span_union_ms": 145.76428271484377,
+          "cuda_api_union_ms": 14.899495117187499,
+          "gpu_work_ms": 61.14097700000006,
+          "gpu_work_union_ms": 61.140966796875
+        }
+      }
+    }
+  ],
+  "caveat": "Profiler changes submission and rank arrival. CPU scopes, spans, API and GPU work overlap; neither subtraction nor their sum is unprofiled critical-path savings. This artifact contains no OP6 GPU correctness or performance result."
+}

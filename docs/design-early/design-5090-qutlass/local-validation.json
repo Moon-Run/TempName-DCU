@@ -1,0 +1,105 @@
+{
+  "date": "2026-11-02",
+  "timezone": "Asia/Shanghai",
+  "scope": "local CPU checks and codec compilation only; not RTX5090 execution",
+  "python": "3.10.12 (main, Mar  3 2026, 11:56:32) [GCC 11.4.0]",
+  "torch_installed": false,
+  "gpu_execution_performed": false,
+  "full_flux_build_performed": false,
+  "checks": [
+    {
+      "command": [
+        "/usr/bin/python3",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tools/5090/phase6",
+        "-p",
+        "test_open_compress*.py",
+        "-v"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": "test_bf16_reference_ties_and_source_order (test_open_compress_codec.Int8ReferenceTests) ... ok\ntest_dequantization_rounding (test_open_compress_codec.Int8ReferenceTests) ... ok\ntest_nearest_even_and_symmetric_extrema (test_open_compress_codec.Int8ReferenceTests) ... ok\ntest_nonfinite_and_partial_groups_rejected_by_oracle (test_open_compress_codec.Int8ReferenceTests) ... ok\ntest_quantization_bound_for_normal_and_outlier_blocks (test_open_compress_codec.Int8ReferenceTests) ... ok\ntest_rank_domain (test_open_compress_codec.Int8ReferenceTests) ... ok\ntest_self_zero_and_all_directed_links (test_open_compress_codec.Int8ReferenceTests) ... ok\ntest_wire_budget_includes_scale_bytes (test_open_compress_codec.Int8ReferenceTests) ... ok\ntest_zero_scale_and_payload (test_open_compress_codec.Int8ReferenceTests) ... ok\ntest_bad_rounding_and_inconsistent_peak_memory_fail (test_open_compress_probe.ProbeEvidenceAudit) ... ok\ntest_complete_directed_wire_and_stream_evidence (test_open_compress_probe.ProbeEvidenceAudit) ... ok\ntest_packet_corruption_bad_hash_and_missing_wait_fail (test_open_compress_probe.ProbeEvidenceAudit) ... ok\ntest_launch_and_all_work_must_belong_to_stages (test_open_compress_probe.ProfileAudit) ... ok\ntest_taco_and_codec_outside_scopes_are_rejected (test_open_compress_probe.ProfileAudit) ... ok\ntest_three_actual_paths_with_streamk_memset (test_open_compress_probe.ProfileAudit) ... ok\ntest_wait_must_establish_actual_cuda_dependency (test_open_compress_probe.ProfileAudit) ... ok\ntest_wrong_stream_device_order_and_swizzle_rejected (test_open_compress_probe.ProfileAudit) ... ok\ntest_bad_codec_lifecycle_precision_or_selection_is_rejected (test_open_compress_runner.Evidence) ... ok\ntest_bf16_cannot_claim_compression (test_open_compress_runner.Evidence) ... ok\ntest_complete_modes_pass (test_open_compress_runner.Evidence) ... ok\ntest_missing_rank_wrong_input_coverage_and_timing_rejected (test_open_compress_runner.Evidence) ... ok\ntest_balanced_cycles_and_single_block (test_open_compress_runner.Protocol) ... ok\ntest_one_block_has_no_ci_and_retains_slowdowns (test_open_compress_runner.Protocol) ... ok\ntest_preview_does_not_create_output_or_query_gpu (test_open_compress_runner.Protocol) ... ok\ntest_six_blocks_ci_and_invalid_evidence_rejected (test_open_compress_runner.Protocol) ... ok\ntest_dirty_dependency_is_rejected_even_with_identical_head (test_open_compress_sources.Build) ... ok\ntest_only_comm_none_is_registered_and_sorted_changes_real_kernel (test_open_compress_sources.Build) ... ok\ntest_verifier_rejects_wrong_protocol_before_files (test_open_compress_sources.Build) ... ok\ntest_codec_identity_is_exact_for_both_implementations (test_open_compress_sources.Workers) ... ok\ntest_generated_adapter_imports_and_initializes_all_three_policies_without_p2p_api (test_open_compress_sources.Workers) ... ok\ntest_generated_worker_initialization_with_launcher_environment (test_open_compress_sources.Workers) ... ok\ntest_oracle_is_new_algorithm_and_matches_fixed_source_order (test_open_compress_sources.Workers) ... ok\ntest_routing_covers_all_modules_without_native_fallback_or_selection (test_open_compress_sources.Workers) ... ok\ntest_training_ast_preserved_and_old_codec_checks_removed (test_open_compress_sources.Workers) ... ok\ntest_worker_case_name_matches_launcher (test_open_compress_sources.Workers) ... ok\n\n----------------------------------------------------------------------\nRan 35 tests in 2.503s\n\nOK\n"
+    },
+    {
+      "command": [
+        "bash",
+        "-n",
+        "tools/5090/phase6/run_open_compress.sh"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": "yp_bind_client_create_v3: RPC: Remote system error - Operation not permitted\nyp_bind_client_create_v3: RPC: Remote system error - Operation not permitted\nyp_bind_client_create_v3: RPC: Remote system error - Operation not permitted\nyp_bind_client_create_v3: RPC: Remote system error - Operation not permitted\nyp_bind_client_create_v3: RPC: Remote system error - Operation not permitted\nyp_bind_client_create_v3: RPC: Remote system error - Operation not permitted\nyp_bind_client_create_v3: RPC: Remote system error - Operation not permitted\n"
+    },
+    {
+      "command": [
+        "bash",
+        "tools/5090/phase6/run_open_compress.sh",
+        "--trials",
+        "1",
+        "--blocks",
+        "1"
+      ],
+      "returncode": 0,
+      "stdout": "PLAN ONLY: no files, GPU queries, builds or training. Add --execute to run.\n{\n  \"protocol\": \"rtx5090-open-compress-int8-three-arm-v1\",\n  \"out\": \"/data/run01/scyb672/hjr/Load-5090/logs/5090/phase6/open-compress-int8-v1-1x-1blocks-20261102-154611-378644\",\n  \"arms\": [\n    \"flux-bf16\",\n    \"flux-int8\",\n    \"flux-int8-interleaved\"\n  ],\n  \"trials\": 1,\n  \"blocks\": 1,\n  \"balanced_order\": false,\n  \"exploratory\": true,\n  \"model\": {\n    \"layers\": 32,\n    \"hidden\": 4096,\n    \"ffn\": 16384,\n    \"heads\": 32,\n    \"sequence\": 2048,\n    \"micro_batch\": 1,\n    \"global_batch\": 4,\n    \"tp\": 8,\n    \"dp\": 1,\n    \"sm_count\": 170,\n    \"seed\": 1234,\n    \"token_seed\": 4321,\n    \"vocab\": 32768\n  },\n  \"warmup_steps\": 10,\n  \"timed_steps\": 50,\n  \"timing_windows\": 3,\n  \"build\": null,\n  \"arrival\": false,\n  \"selective\": false,\n  \"stages\": \"hardware/NCCL -> isolated Flux+codec build -> codec/operator/profile -> model smoke/profile -> full steps -> report\"\n}\n",
+      "stderr": "yp_bind_client_create_v3: RPC: Remote system error - Operation not permitted\nyp_bind_client_create_v3: RPC: Remote system error - Operation not permitted\nyp_bind_client_create_v3: RPC: Remote system error - Operation not permitted\nyp_bind_client_create_v3: RPC: Remote system error - Operation not permitted\nyp_bind_client_create_v3: RPC: Remote system error - Operation not permitted\nyp_bind_client_create_v3: RPC: Remote system error - Operation not permitted\nyp_bind_client_create_v3: RPC: Remote system error - Operation not permitted\n"
+    },
+    {
+      "command": [
+        "/data/apps/cuda/12.8/bin/nvcc",
+        "--version"
+      ],
+      "returncode": 0,
+      "stdout": "nvcc: NVIDIA (R) Cuda compiler driver\nCopyright (c) 2005-2025 NVIDIA Corporation\nBuilt on Wed_Jan_15_19:20:09_PST_2025\nCuda compilation tools, release 12.8, V12.8.61\nBuild cuda_12.8.r12.8/compiler.35404655_0\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/data/apps/cuda/12.8/bin/nvcc",
+        "-std=c++17",
+        "-O3",
+        "-shared",
+        "-Xcompiler=-fPIC",
+        "-gencode=arch=compute_120,code=sm_120",
+        "/data/run01/scyb672/hjr/TempName-New/tools/5090/phase6/open_compress_codec.cu",
+        "-o",
+        "/tmp/libopen_compress_final_validation.so"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/data/apps/cuda/12.8/bin/cuobjdump",
+        "-lelf",
+        "/tmp/libopen_compress_final_validation.so"
+      ],
+      "returncode": 0,
+      "stdout": "ELF file    1: libopen_compress_final_validation.1.sm_120.cubin\nELF file    2: libopen_compress_final_validation.2.sm_120.cubin\n",
+      "stderr": ""
+    }
+  ],
+  "codec_abi_version": 1,
+  "compiled_codec_sha256": "1a083e384e6a2ffca37f58542a9f09a9631c13410cfd8ff07ab19370235e0c8b",
+  "source_sha256": {
+    "tools/5090/phase6/open_compress.py": "6f8eb7e638e1bd2168e6df0f0197bf7ba52a78a6730c4e6588031356731e1135",
+    "tools/5090/phase6/open_compress_build.py": "b3303f686112f2236f132656f50987cfb92ad351912985bb975fd722c45de792",
+    "tools/5090/phase6/open_compress_codec.cu": "2f6f928d43be75ae42c5fa846d9b67e612ad0d46732373ece39aa7eec4eb6a38",
+    "tools/5090/phase6/open_compress_codec.py": "b5e9f3aef8c02130eeeed2ed94e06c67806a980c4643928d43e1d38f1ce40b62",
+    "tools/5090/phase6/open_compress_probe.py": "98aa5b84c95da0d65c0ac17847d08dab922bd6fb2c29543b6424968ed8970e9a",
+    "tools/5090/phase6/open_compress_profile.py": "02168cc1703afd558cee567de6a986d8f5cbd13a6ac9cb45448d7b3d79c3a66b",
+    "tools/5090/phase6/open_compress_protocol.py": "edb07ead362ddb8d78fad8edca3a3ce40c1bf4fa4349dbe28d1068ffeba8b798",
+    "tools/5090/phase6/open_compress_sources.py": "36d16914ab4290aef8c40dee41c28ceaccb69850510d78d98ba87c9f154ccc7e",
+    "tools/5090/phase6/open_compress_validation.py": "795716951539174e29d604bdfa6c110a6665980788c9662da5ba56646d121eab",
+    "tools/5090/phase6/test_open_compress_codec.py": "d116aa0c15f95fd2cfc432d229088ad7aff15742ea19ac407e75123ff3dd5d78",
+    "tools/5090/phase6/test_open_compress_probe.py": "eb5c0677ad13c2ba22a97a47e91b4a9eb50b57d2de3c70379b4e6b565a8a9c17",
+    "tools/5090/phase6/test_open_compress_runner.py": "dde4f1e50aeab538530651f67fe74037e6cfad48f99bd089b79174e1a690dbd8",
+    "tools/5090/phase6/test_open_compress_sources.py": "f87d6e0037933f82a85ecf360ca53a32335f1d47f3aa11882fac93aa85da7c51",
+    "tools/5090/phase6/run_open_compress.sh": "6cdc8ee8b17547b551c5d9cd6b53fee90ad99164b1d8ec79105b973ca05cf04f"
+  },
+  "passed": true
+}

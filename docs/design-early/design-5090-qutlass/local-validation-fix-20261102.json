@@ -1,0 +1,60 @@
+{
+  "date": "2026-11-02",
+  "timezone": "Asia/Shanghai",
+  "scope": "Megatron configuration fix, machine output directory and nproc defaults",
+  "fix_gpu_execution_performed": false,
+  "checks": [
+    {
+      "command": "python3 -B -m unittest discover -s tools/5090/phase6 -p 'test_open_compress*.py' -v",
+      "tests": 65,
+      "passed": true
+    },
+    {
+      "command": "python3 -B -m unittest discover -s tools/5090/phase6 -p 'test_rtx5090_defaults.py' -v",
+      "tests": 7,
+      "passed": true
+    },
+    {
+      "command": "python3 -B -m unittest discover -s tools/5090/phase6 -p 'test_*.py'",
+      "tests": 422,
+      "errors": 1,
+      "skipped": 1,
+      "duration_seconds": 274.171,
+      "note": "Suite imported the old mocked compile test before it was changed to pass jobs=7. Its sole error was nproc intercepted by the subprocess.run mock. The corrected test passes in the subsequent 65-test focused run; no implementation error remains from this suite."
+    }
+  ],
+  "preview": {
+    "place60_parent": "Load-5090/SL3060",
+    "place61_parent": "Load-5090/SL3061",
+    "explicit_out_overrides_place": true,
+    "nproc_observed": 48,
+    "default_jobs_observed": 48,
+    "explicit_jobs_7_observed": 7
+  },
+  "failure_evidence_review": "failure-20261102-171639-review.json",
+  "source_sha256": {
+    "build.sh": "8bc3d519e2fa4e42b24f51684ea3c819a70af5dadf49dd20d192d24023a11d4d",
+    "tools/5090/phase6/baseline.py": "6118a025d4789bade3adb1407ade7c2300c813597900e99889ce76d0366519c5",
+    "tools/5090/phase6/baseline_build.py": "4db3eefbbf870bf79b0cd41a6576a99bbc0bee598ce307eedd613bfca3d8f3ba",
+    "tools/5090/phase6/flux_baseline.py": "27e4692b849349d7b2d724eb76b00b16c45385aef8a5b9cfbb645469e009accd",
+    "tools/5090/phase6/flux_baseline_build.py": "fadeab57cdc6cf679fa151aed8df66e326415b03972847fdcd84cdee93922c7d",
+    "tools/5090/phase6/op1_a.py": "9be0c292baadc277ef60633d9bc529b53ab62cb5403e4131d29693ab38c79ccd",
+    "tools/5090/phase6/op1_a_build.py": "9ca08894fcd28203b075d1ddf0dfa623fbd522cde3202fd915606584e508543a",
+    "tools/5090/phase6/op1_abc.py": "379468f70f6c92ab9b3a20fbfcea79ac783dad813a92953f0f15f2bae92c2b13",
+    "tools/5090/phase6/op1_abc_build.py": "909660ab1f0e070f2d65db6dd27bb2d2fefd075cdfdb82c73dadb94c548dc14d",
+    "tools/5090/phase6/op2_abc.py": "a915e06526c390d7053a3e5117b09fcd17c9b3c21bb5d32a6b0bde0b4d3bd5c3",
+    "tools/5090/phase6/op3.py": "dae1a189c667d4b176c31df3047fe1079c833e25ba5db9a8d837ee09b792bfc6",
+    "tools/5090/phase6/op3_build.py": "8b52844dc8f0240b1988c5111690515d7cb2b9d8ab9cc7f3a19db24a1931e567",
+    "tools/5090/phase6/op4.py": "824397027af6ac40d5e755565eaff4266daae419a41fe313fd56c3c2955a30c7",
+    "tools/5090/phase6/op5.py": "b965ff356c42df0288ced6c3440721f687da25b1f38f61caee902ceed1982e9c",
+    "tools/5090/phase6/open_compress.py": "c99348f4366525bbed4f9d89c0d612410bc45a44aa223633e33eea2fac374fbe",
+    "tools/5090/phase6/open_compress_build.py": "7aa8fbab895a12980719a5aedfa8ef91627ea5849bec096a300e2ed8cbe2aaab",
+    "tools/5090/phase6/open_compress_megatron.py": "267d20e2d6b1f889b066bc628bbd96bd194a76be0ccc979cdb3df46e75a96935",
+    "tools/5090/phase6/open_compress_sources.py": "5895fa7efb12f64571539fd6b51d110c3ba7f59f74df0e0a528dd6d256ff3886",
+    "tools/5090/phase6/rtx5090_defaults.py": "430e441edbc981cc5d78143867d2fff5944c3edfc48046c8322f993d3896c9ef",
+    "tools/5090/phase6/test_open_compress_build_reuse.py": "2fafa2aec8cd7fdddcb9cc2ce7b697920fa07d561516f36d254ac7443ec0e90e",
+    "tools/5090/phase6/test_open_compress_megatron.py": "1c3250b09ac347125eaca730336ff589d1acb9361af4f0faf9ceb373254dcda5",
+    "tools/5090/phase6/test_open_compress_runner.py": "8b61ad2c2761798d4b9f4fb17e6a1681e931a1eabc2ac00fd21de25b07fb0c0f",
+    "tools/5090/phase6/test_rtx5090_defaults.py": "8b13a6c3aa14d79f5e44747685af8c0963e863e66ec3aa050ae0158021d07957"
+  }
+}

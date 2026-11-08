@@ -1,0 +1,30 @@
+TACO algorithm attribution
+==========================
+
+The H128 adaptive-scale, normalized-Hadamard, dual-scale E4M3 codec in
+src/taco/codec.hip adapts the algorithm in COCCL_TACO revision
+ca717e05b6dd6d21fff4d2617d209c95be63f3ef,
+src/device/compress/taco/taco.cu.
+
+Copyright (c) 2025, Institute of Computing Technology, Chinese Academy of Sciences.
+Developers: Xingchen Liu, Haoran Kong, Zheng Wei, Liyang Zhao, Yufan Wang,
+Jinwu Yang, Dingwen Tao (advisor), Guangming Tan (advisor).
+
+The original BSD-3-Clause license and source snapshot are preserved in
+third_party/taco/LICENSE.txt and third_party/taco/upstream/. The implementation
+was rewritten for HIP/DCU on 2026-11-08: shared-memory collectives without a
+warp32 assumption, software E4M3FN conversion, a ctypes ABI, and an independent
+FP64 CPU reference. No NVIDIA CUDA binary or COCCL shared library is used.
+
+Flux design reference
+---------------------
+ByteDance Flux commit 19831ca2d820e3e782ed1d15d8b52d0898b78b26 (Apache-2.0).
+The BW1000 backend is a new HIP/PyTorch BLAS macroblock implementation.
+It does not compile or execute the upstream CUDA/CUTLASS Flux library.
+Reference files and their original license are retained in third_party/flux/.
+
+Interleaved production mapping
+------------------------------
+Entwine, arXiv:2609.11562v1, section 3.1 equation (1).
+All ranks use destination=slot%world, within=slot//world.
+The present backend applies the mapping to BLAS macroblocks, not CUDA CTAs.

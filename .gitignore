@@ -4,3 +4,129 @@
 *.ptx
 *.cubin
 *.fatbin
+
+# Experiment artifacts: raw results, profiles, per-run source snapshots,
+# allocation controls, downloaded data, environments and frozen builds.
+# Maintain reusable code in tools/, src/, include/ and python/ instead.
+/outputs/
+/logs/
+/log/
+/prof/
+/workspace/
+/tmp/
+/data/
+/checkpoints/
+/runs/
+/wandb/
+/tensorboard/
+
+
+
+# Do not blanket-ignore JSON/CSV/Markdown: configs and test fixtures are source.
+# Do not ignore *.bc or *.ll: python/flux_triton/extra/cuda_extra.* is required.
+
+# Logs and profiler exports produced outside the artifact directories.
+*.log
+*.log.*
+slurm-*.out
+slurm-*.err
+*.nsys-rep
+*.ncu-rep
+*.qdrep
+report*.sqlite
+report*.sqlite-*
+
+# CMake/Ninja and native compilation products.
+build/
+cmake-build-*/
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+compile_commands*.json
+build.ninja
+.ninja_deps
+.ninja_log
+*.o
+*.obj
+*.a
+*.so
+*.so.*
+*.cubin
+*.fatbin
+
+# Python packaging, generated version metadata and local environments.
+dist/
+*.egg-info/
+.eggs/
+*.egg
+*.whl
+*.py[cod]
+__pycache__/
+/python/flux/version.py
+.venv/
+venv/
+
+# Tool caches and test/coverage outputs.
+.cache/
+.tox/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.hypothesis/
+.coverage
+.coverage.*
+htmlcov/
+
+# Editor temporary files.
+*~
+*.swp
+*.swo
+.DS_Store
+
+# Only these immutable build sources/plans are retained from the old experiment tree.
+# No historical training windows, traces, calibration samples or built libraries.
+!/outputs/
+/outputs/**
+!/logs/
+/logs/**
+!/logs/h100/
+!/outputs/h100/
+!/logs/h100/phase6/
+!/outputs/h100/phase6/
+!/logs/h100/phase6/baseline-taco-cuda-3x-50steps-20261021-162929-989672/
+!/outputs/h100/phase6/frozen-candidate-v1-20261013/
+!/outputs/h100/phase6/gpt67-tp8-20261010-112249/
+!/logs/h100/phase6/baseline-taco-cuda-3x-50steps-20261021-162929-989672/compare1/
+!/outputs/h100/phase6/frozen-candidate-v1-20261013/evidence/
+!/outputs/h100/phase6/frozen-candidate-v1-20261013/source/
+!/outputs/h100/phase6/gpt67-tp8-20261010-112249/candidates-20261010-153517/
+!/logs/h100/phase6/baseline-taco-cuda-3x-50steps-20261021-162929-989672/compare1/provenance/
+!/logs/h100/phase6/baseline-taco-cuda-3x-50steps-20261021-162929-989672/compare1/scripts/
+!/outputs/h100/phase6/gpt67-tp8-20261010-112249/candidates-20261010-153517/interleaved_arrival_selective/
+!/outputs/h100/phase6/gpt67-tp8-20261010-112249/candidates-20261010-153517/remote_arrival_selective/
+!/outputs/h100/phase6/frozen-candidate-v1-20261013/source/**
+!/outputs/h100/phase6/gpt67-tp8-20261010-112249/candidates-20261010-153517/remote_arrival_selective/**
+!/outputs/h100/phase6/gpt67-tp8-20261010-112249/candidates-20261010-153517/interleaved_arrival_selective/**
+!/logs/h100/phase6/baseline-taco-cuda-3x-50steps-20261021-162929-989672/compare1/provenance/candidate-manifest.json
+!/logs/h100/phase6/baseline-taco-cuda-3x-50steps-20261021-162929-989672/compare1/provenance/fused-manifest.json
+!/logs/h100/phase6/baseline-taco-cuda-3x-50steps-20261021-162929-989672/compare1/scripts/selection-plan.json
+!/outputs/h100/phase6/frozen-candidate-v1-20261013/evidence/selection-plan.json
+!/outputs/h100/phase6/frozen-candidate-v1-20261013/manifest.json
+!/outputs/h100/phase6/gpt67-tp8-20261010-112249/candidates-20261010-153517/manifest.json
+
+# Generated artifacts remain excluded even inside frozen source trees.
+**/build/
+**/__pycache__/
+*.py[cod]
+*.so
+*.so.*
+*.a
+*.o
+*.whl
+*.i
+*.ii
+*.gpu
+*.ptx
+*.cubin
+*.fatbin
+/3rdparty/*/build/

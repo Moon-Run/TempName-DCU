@@ -1,0 +1,64 @@
+{
+  "batch": "../Load-5090/SL3060/op6-local-attention-graph-paired-v1-1x-4blocks-20261104-121434-804271",
+  "saved_status": {
+    "protocol": "rtx5090-phase6-op6-local-attention-graph-paired-v1",
+    "status": "failed",
+    "stage": "compare1/block01-op6",
+    "error": "CalledProcessError: Command '['/workspace/venvs/tempname-5090/bin/python', '/workspace/TempName-New/tools/5090/phase6/op6_child.py', '--variant', 'op6', '--execute', '--foreground', '--out', '/workspace/Load-5090/SL3060/op6-local-attention-graph-paired-v1-1x-4blocks-20261104-121434-804271/compare1/block01-op6', '--trials', '1', '--blocks', '1', '--reserve-mib', '0', '--python', '/workspace/venvs/tempname-5090/bin/python', '--megatron', '/workspace/Megatron-LM', '--cuda-home', '/usr/local/cuda-12.9', '--build-cuda-home', '/usr/local/cuda-12.9', '--jobs', '128', '--worker-timeout', '3600', '--op3-build', '/workspace/Load-5090/SL3060/op6-local-attention-graph-paired-v1-1x-4blocks-20261104-121434-804271/compare1/block00-op4/build']' returned non-zero exit status 1."
+  },
+  "completed_pair": "compare1/block00",
+  "op4_ms": 835.4203298315406,
+  "op6_ms": 833.083717096597,
+  "saved_ms": 2.3366127349436283,
+  "saved_percent": 0.2796930660539225,
+  "formal_steps_per_arm": 50,
+  "completed_pairs": 1,
+  "planned_pairs": 4,
+  "all_blocks_completed": false,
+  "pair_evidence_sha256": "60234736eced6a5d8c2a575a835609d5342ed0ade03e850f77c95d6345e2749f",
+  "timing_rank_records_sha256": {
+    "op4/results/compare1/block00-op3-combined/rank0.json": "25faa23188b8422bfddb9f10c7486c0495eeddb5d79a1f6af148625a223ae1bc",
+    "op4/results/compare1/block00-op3-combined/rank1.json": "716c0bc516fd0a7d0eecc65efd4eb9aec71de6f1f26388be31fc95814269472b",
+    "op4/results/compare1/block00-op3-combined/rank2.json": "707b65583d79325f9aeeacd553c9584b7f25361d8a984a5a88bda37b8d423508",
+    "op4/results/compare1/block00-op3-combined/rank3.json": "599c8f4a15166adc41f1d59e159a964349d096bd58dffa7ac396ecac267ab27c",
+    "op4/results/compare1/block00-op3-combined/rank4.json": "4198205dd310b1c26c09390eb13e0ec4afb98ea2eb75d23b9450e77e1fa4ee50",
+    "op4/results/compare1/block00-op3-combined/rank5.json": "9f3681c1e3f3814a95d75bfeb08289d7fc0f87d09c7bfebf4857e9993cef331b",
+    "op4/results/compare1/block00-op3-combined/rank6.json": "008042864739b95c638a1593f3516d58bcf9b3fb3becff77957fa29f94f427b4",
+    "op4/results/compare1/block00-op3-combined/rank7.json": "d630d196548872d067731ab63ee4dda5982ce3d508e7e085584428e5a0838be6",
+    "op6/results/compare1/block00-op3-combined/rank0.json": "5318d4a5d2ffcdbc2d69b6854682a93e59bda86a8b71eef8bd57871022c04f40",
+    "op6/results/compare1/block00-op3-combined/rank1.json": "55ce813dc1273a43e90c5d9ce39ea76c24506cad48ca1cdb770ec887542c6baf",
+    "op6/results/compare1/block00-op3-combined/rank2.json": "346de6cd09ab815adf3de64b120c8f1c2ab59abfd799f044bf1238787ce62602",
+    "op6/results/compare1/block00-op3-combined/rank3.json": "45eecacaeffee2959fa823310c14d7bf5c23c23ce56f2ed9771a086bc2612f84",
+    "op6/results/compare1/block00-op3-combined/rank4.json": "f5cbb4d31eb642c196e317892ff1a6a7a49c728c59e3beb2d08897f1f563e6c4",
+    "op6/results/compare1/block00-op3-combined/rank5.json": "d06e731b5e46333b7d5dffc741f75152d7d108e688788312d9a595a54643f82b",
+    "op6/results/compare1/block00-op3-combined/rank6.json": "10d583beb72dd9468aa1624f2575519617b0610baeb455cb5599d77c49575c51",
+    "op6/results/compare1/block00-op3-combined/rank7.json": "01d370686aacc4de5810e733c3b3d79f457fa04295cbbec0a81c84189630dcd5"
+  },
+  "compiler_tmp_reproduction": {
+    "nvcc": "/data/apps/cuda/12.8/bin/nvcc",
+    "original_query_failed": true,
+    "error": "nvcc fatal   : Could not open output file '/data/run01/scyb672/hjr/TempName-New/op6-nvcc-proof-ea_hr0ni/unusable-system-tmp/tmpxft_00000004_0000000a'",
+    "redirected_query_passed": true,
+    "sm120_ptx_compile_passed": true,
+    "temporary_directory": "/data/run01/scyb672/hjr/TempName-New/.op6-tmp-2198/run-di_r4l1s",
+    "same_output_filesystem": true,
+    "gpu_used": false,
+    "temporary_directory_cleaned": true
+  },
+  "source_batch_modified": false,
+  "new_gpu_run": false,
+  "limitation": "One completed pair; raw formal timings rechecked. Native build binaries were not revalidated locally; no full-batch speedup claim.",
+  "cpu_regression": {
+    "tests": 94,
+    "passed": true,
+    "skipped": 0,
+    "torch": "2.7.0+cu128",
+    "gpu_used": false,
+    "log_sha256": "1a540a6d6dfb70331b3e18bfe1d8723cd6e3027182836f5bcd7f6f217e8eca31"
+  },
+  "runtime_source_sha256": {
+    "tools/5090/phase6/op6.py": "11d0eb647b17cc8067aa43d2a4fc2f4539ab774d55a6c79d6ff7f44b8438d0e9",
+    "tools/5090/phase6/op6_child.py": "766a2114b9973199695d4fa88f19c00134afd6e733eabc5ce90f5cae15687103",
+    "tools/5090/phase6/op6_temporary.py": "b1e3648b07bb94eb9d8681c48cff8030436aabf839b5cf8ed8e458a63848ee25"
+  }
+}

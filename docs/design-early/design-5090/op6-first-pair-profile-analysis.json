@@ -1,0 +1,219 @@
+{
+  "schema": "op6-first-pair-profile-reanalysis-v1",
+  "batch": "../Load-5090/SL3060/op6-local-attention-graph-paired-v1-1x-4blocks-20261103-011706-043929",
+  "saved_batch_state": {
+    "protocol": "rtx5090-phase6-op6-local-attention-graph-paired-v1",
+    "status": "failed",
+    "stage": "compare1/block00-op6",
+    "error": "CalledProcessError: Command '['/workspace/venvs/tempname-5090/bin/python', '/workspace/TempName-New/tools/5090/phase6/op6_child.py', '--variant', 'op6', '--execute', '--foreground', '--out', '/workspace/Load-5090/SL3060/op6-local-attention-graph-paired-v1-1x-4blocks-20261103-011706-043929/compare1/block00-op6', '--trials', '1', '--blocks', '1', '--python', '/workspace/venvs/tempname-5090/bin/python', '--megatron', '/workspace/Megatron-LM', '--cuda-home', '/usr/local/cuda-12.9', '--build-cuda-home', '/usr/local/cuda-12.9', '--jobs', '128', '--worker-timeout', '3600', '--op3-build', '/workspace/Load-5090/SL3060/op6-local-attention-graph-paired-v1-1x-4blocks-20261103-011706-043929/compare1/block00-op4/build']' returned non-zero exit status 1."
+  },
+  "op4_formal_ms": 830.4842508397996,
+  "candidate_formal_report_present": false,
+  "numerical_checks": [
+    {
+      "mode": "smoke",
+      "ranks": 8,
+      "initial_identity_equal": true,
+      "numerical_trajectory_identical": true,
+      "full_parameter_and_gradient_trajectory_checked": true,
+      "projection_hashes_checked": true,
+      "concurrent": true,
+      "smoke_gradient_hash_equality_required": true
+    },
+    {
+      "mode": "profile",
+      "ranks": 8,
+      "initial_identity_equal": true,
+      "numerical_trajectory_identical": true,
+      "full_parameter_and_gradient_trajectory_checked": false,
+      "projection_hashes_checked": false,
+      "concurrent": true,
+      "smoke_gradient_hash_equality_required": true
+    }
+  ],
+  "profiles": [
+    {
+      "rank": 0,
+      "trace": "../Load-5090/SL3060/op6-local-attention-graph-paired-v1-1x-4blocks-20261103-011706-043929/compare1/block00-op6/results/profile-op3-combined/rank0-profile.json.gz",
+      "trace_sha256": "4eebc303d57a8ea77ef05297e1dd5502c9f06985598e1cec7952c368dc63e4c5",
+      "complete_profile_path_reanalyzed": true,
+      "forward_graph_launches": 128,
+      "backward_graph_launches": 128,
+      "timestamp_overlaps": 173,
+      "old_timestamp_rule_rejections": 57,
+      "max_observed_overlap_us": 0.54541015625,
+      "timestamp_policy": {
+        "policy": "op6-sm120-correlated-graph-kernel-timestamps-v1",
+        "graph_kernel_tolerance_us": 1.0,
+        "max_fraction_of_shorter_kernel": 0.25,
+        "strict_boundary_tolerance_us": 0.01
+      }
+    },
+    {
+      "rank": 1,
+      "trace": "../Load-5090/SL3060/op6-local-attention-graph-paired-v1-1x-4blocks-20261103-011706-043929/compare1/block00-op6/results/profile-op3-combined/rank1-profile.json.gz",
+      "trace_sha256": "ce3b925b1d3d9e8fdba31a901b959bb44634d304645e6f5f7a488d4ef0abdf9a",
+      "complete_profile_path_reanalyzed": true,
+      "forward_graph_launches": 128,
+      "backward_graph_launches": 128,
+      "timestamp_overlaps": 175,
+      "old_timestamp_rule_rejections": 63,
+      "max_observed_overlap_us": 0.67236328125,
+      "timestamp_policy": {
+        "policy": "op6-sm120-correlated-graph-kernel-timestamps-v1",
+        "graph_kernel_tolerance_us": 1.0,
+        "max_fraction_of_shorter_kernel": 0.25,
+        "strict_boundary_tolerance_us": 0.01
+      }
+    },
+    {
+      "rank": 2,
+      "trace": "../Load-5090/SL3060/op6-local-attention-graph-paired-v1-1x-4blocks-20261103-011706-043929/compare1/block00-op6/results/profile-op3-combined/rank2-profile.json.gz",
+      "trace_sha256": "3b06ab3ad2b6aedf2d6d5200e7d022067b10b1f75237106716786e7d7d56084c",
+      "complete_profile_path_reanalyzed": true,
+      "forward_graph_launches": 128,
+      "backward_graph_launches": 128,
+      "timestamp_overlaps": 188,
+      "old_timestamp_rule_rejections": 7,
+      "max_observed_overlap_us": 0.60693359375,
+      "timestamp_policy": {
+        "policy": "op6-sm120-correlated-graph-kernel-timestamps-v1",
+        "graph_kernel_tolerance_us": 1.0,
+        "max_fraction_of_shorter_kernel": 0.25,
+        "strict_boundary_tolerance_us": 0.01
+      }
+    },
+    {
+      "rank": 3,
+      "trace": "../Load-5090/SL3060/op6-local-attention-graph-paired-v1-1x-4blocks-20261103-011706-043929/compare1/block00-op6/results/profile-op3-combined/rank3-profile.json.gz",
+      "trace_sha256": "337ef345577471a849d0a4185ef83a9abf7274f01bcdde0018f11188cf99b1e9",
+      "complete_profile_path_reanalyzed": true,
+      "forward_graph_launches": 128,
+      "backward_graph_launches": 128,
+      "timestamp_overlaps": 187,
+      "old_timestamp_rule_rejections": 13,
+      "max_observed_overlap_us": 0.6083984375,
+      "timestamp_policy": {
+        "policy": "op6-sm120-correlated-graph-kernel-timestamps-v1",
+        "graph_kernel_tolerance_us": 1.0,
+        "max_fraction_of_shorter_kernel": 0.25,
+        "strict_boundary_tolerance_us": 0.01
+      }
+    },
+    {
+      "rank": 4,
+      "trace": "../Load-5090/SL3060/op6-local-attention-graph-paired-v1-1x-4blocks-20261103-011706-043929/compare1/block00-op6/results/profile-op3-combined/rank4-profile.json.gz",
+      "trace_sha256": "871d5b10a6feadb8b1704ff0982759e13c7484cbf5d6f140018e7e2abb3abd1a",
+      "complete_profile_path_reanalyzed": true,
+      "forward_graph_launches": 128,
+      "backward_graph_launches": 128,
+      "timestamp_overlaps": 187,
+      "old_timestamp_rule_rejections": 20,
+      "max_observed_overlap_us": 0.83251953125,
+      "timestamp_policy": {
+        "policy": "op6-sm120-correlated-graph-kernel-timestamps-v1",
+        "graph_kernel_tolerance_us": 1.0,
+        "max_fraction_of_shorter_kernel": 0.25,
+        "strict_boundary_tolerance_us": 0.01
+      }
+    },
+    {
+      "rank": 5,
+      "trace": "../Load-5090/SL3060/op6-local-attention-graph-paired-v1-1x-4blocks-20261103-011706-043929/compare1/block00-op6/results/profile-op3-combined/rank5-profile.json.gz",
+      "trace_sha256": "2729ca96fc468a96b41b196aeaaa2a4d69efa85624bba047ff4fa74b6957ae3b",
+      "complete_profile_path_reanalyzed": true,
+      "forward_graph_launches": 128,
+      "backward_graph_launches": 128,
+      "timestamp_overlaps": 193,
+      "old_timestamp_rule_rejections": 3,
+      "max_observed_overlap_us": 0.89599609375,
+      "timestamp_policy": {
+        "policy": "op6-sm120-correlated-graph-kernel-timestamps-v1",
+        "graph_kernel_tolerance_us": 1.0,
+        "max_fraction_of_shorter_kernel": 0.25,
+        "strict_boundary_tolerance_us": 0.01
+      }
+    },
+    {
+      "rank": 6,
+      "trace": "../Load-5090/SL3060/op6-local-attention-graph-paired-v1-1x-4blocks-20261103-011706-043929/compare1/block00-op6/results/profile-op3-combined/rank6-profile.json.gz",
+      "trace_sha256": "1cbfdf17fd25ec906c6640ceb7f285f925429cb7abdc19ee1ca48ed2ac71c331",
+      "complete_profile_path_reanalyzed": true,
+      "forward_graph_launches": 128,
+      "backward_graph_launches": 128,
+      "timestamp_overlaps": 187,
+      "old_timestamp_rule_rejections": 18,
+      "max_observed_overlap_us": 0.8642578125,
+      "timestamp_policy": {
+        "policy": "op6-sm120-correlated-graph-kernel-timestamps-v1",
+        "graph_kernel_tolerance_us": 1.0,
+        "max_fraction_of_shorter_kernel": 0.25,
+        "strict_boundary_tolerance_us": 0.01
+      }
+    },
+    {
+      "rank": 7,
+      "trace": "../Load-5090/SL3060/op6-local-attention-graph-paired-v1-1x-4blocks-20261103-011706-043929/compare1/block00-op6/results/profile-op3-combined/rank7-profile.json.gz",
+      "trace_sha256": "2900ed9bd438e1ed91a595bc276d65e35e52fe7e83b9695369e740a3b19c974f",
+      "complete_profile_path_reanalyzed": true,
+      "forward_graph_launches": 128,
+      "backward_graph_launches": 128,
+      "timestamp_overlaps": 175,
+      "old_timestamp_rule_rejections": 57,
+      "max_observed_overlap_us": 0.5439453125,
+      "timestamp_policy": {
+        "policy": "op6-sm120-correlated-graph-kernel-timestamps-v1",
+        "graph_kernel_tolerance_us": 1.0,
+        "max_fraction_of_shorter_kernel": 0.25,
+        "strict_boundary_tolerance_us": 0.01
+      }
+    }
+  ],
+  "rank_records_sha256": {
+    "op4/results/smoke-op3-combined/rank0.json": "f61bd74b4a1ce531166a374c4235ede4019f9a1e6051a6db20e4b70b1863b8b4",
+    "op4/results/smoke-op3-combined/rank1.json": "50e5d6f6d70bf4eb3293a62e485258704a779d7fcb15a0f269d7efb6d7167b48",
+    "op4/results/smoke-op3-combined/rank2.json": "c2260eadec113a5022cb704691a1cff3e1fe6355c9d5918eda47acc56773dc42",
+    "op4/results/smoke-op3-combined/rank3.json": "c55132553218878d55ae2f710a24d972898ff80315c677c3771b4e263925a98e",
+    "op4/results/smoke-op3-combined/rank4.json": "c604d66dc982d159167327a93a40a88218602b27f8072b6019f6fca8761d56c2",
+    "op4/results/smoke-op3-combined/rank5.json": "1c796bf8ca58c5bd54df75f57c2de06646717dc8d1edf7cf53b27ac1bad9504d",
+    "op4/results/smoke-op3-combined/rank6.json": "3872170f4cd983729d037fd4471559125a63104a6bbdf85cb64f9faa1eebade2",
+    "op4/results/smoke-op3-combined/rank7.json": "4b26900e5843f69811ef9899027e237930430ca454c3c7113481a5605383b50b",
+    "op4/results/profile-op3-combined/rank0.json": "998900da09c291a2da924a277a42b17004dd9530f4665a29c94eff8a6cdd34f7",
+    "op4/results/profile-op3-combined/rank1.json": "d93a9f09570c99a7062a2db167cef79c6add4bcc40949a01a2d6d80a5dd452fe",
+    "op4/results/profile-op3-combined/rank2.json": "156676c2f51dcb30a415fcc8e978174af835b7004aa79fc1aaa264dda413b99d",
+    "op4/results/profile-op3-combined/rank3.json": "17c35d899c76f122aafb3dabf502ed345ca3a345560ab591bd73315303746358",
+    "op4/results/profile-op3-combined/rank4.json": "14b47a3dd15a13809a28c7f22a0e68b617070c57385ef00542d4227f365ebe84",
+    "op4/results/profile-op3-combined/rank5.json": "15295945ccbc5168d187e6803cef7485398d75d859972a0e28a369c0eae7f0c2",
+    "op4/results/profile-op3-combined/rank6.json": "b5bfec76afdec9fa952bfea264fc35ce485360625747744dd295f12b5adf5c5c",
+    "op4/results/profile-op3-combined/rank7.json": "c79da1bac5c0d39ca58b04712798e914f4fb4574a505bb11d1805b975660d906",
+    "op4/results/compare1/block00-op3-combined/rank0.json": "3fa16f04c54a8a75744785d2424ca7d070636c59bb5894bb0f8511e85fe7f807",
+    "op4/results/compare1/block00-op3-combined/rank1.json": "4760bf1bc40d1ef311cb0eb8d45947f86a9f37cb2e6f33235cc1149546a062ab",
+    "op4/results/compare1/block00-op3-combined/rank2.json": "fef3dbc7320d5272891aaa3227060521b0b4040dee31db4bc51ba9ba313c318a",
+    "op4/results/compare1/block00-op3-combined/rank3.json": "2801cccb1bec56d83065e57b04ab48204aab3fac740a49dad56e0529e9a75116",
+    "op4/results/compare1/block00-op3-combined/rank4.json": "e20353914990625de64e4ca31d44efad075d1f46cb4d8f1f9e579d6284f6c8ee",
+    "op4/results/compare1/block00-op3-combined/rank5.json": "3cbebd68dead38313d1a4fd45b35a0a85e23bf913671a40c831724fec28e9a12",
+    "op4/results/compare1/block00-op3-combined/rank6.json": "3b9194b23d26c6a3e84f52b17f3e354165e2f3df91f3aec24777eb14ef15edda",
+    "op4/results/compare1/block00-op3-combined/rank7.json": "1c7463ca5540449cdd7109d95d4a444fc5ea8ca507a4ca05d88e9d8d2ffc81a9",
+    "op6/results/smoke-op3-combined/rank0.json": "f49db3a061bc7eaeae947328eb48a29847b1a77f3e89435a7d9ea361569ea0e8",
+    "op6/results/smoke-op3-combined/rank1.json": "42a4fed6b846735d132d58054bf8130adfa71c6e2abfca3c94bdd7d7931db678",
+    "op6/results/smoke-op3-combined/rank2.json": "1f0c233e5efe6a9ac9547b8d3c21fe4b02498acd0f2926c2a532a3068056176a",
+    "op6/results/smoke-op3-combined/rank3.json": "7ce219dcee621153fae008b79a1fff5ccabfb73c83b87943c6853eced52a20c9",
+    "op6/results/smoke-op3-combined/rank4.json": "c625d01eb0cf3c42fc4e734b250afb101e1140f3243ce2dbb6b4698d2f4acf10",
+    "op6/results/smoke-op3-combined/rank5.json": "bce18019c25ec600606ab99692022e71169c0fd0fa339467bbf2c1da2c642806",
+    "op6/results/smoke-op3-combined/rank6.json": "7356ca950f8fbe03fc4b0607136420b45a45c2c97080ac2f8a1fcb77ecc32c56",
+    "op6/results/smoke-op3-combined/rank7.json": "0442e671862ee5a6a509111dbd3847a838f7e549df23e3b1b8fcd3cce7751d17",
+    "op6/results/profile-op3-combined/rank0.json": "0808763c8f73c2436441fdfe072984f2fd71d9abcb0ced3cd7c542a1d8cd68dc",
+    "op6/results/profile-op3-combined/rank1.json": "90e575c70e7f2638dec35b9e925eddd85866498aa494514d8ed7f93f8a64d43a",
+    "op6/results/profile-op3-combined/rank2.json": "2998098a166100e85ebf03213f5861bfc492aefaee9f73cfc0d35f1d768ccf22",
+    "op6/results/profile-op3-combined/rank3.json": "fe9c1dc263a47d06198493e79108a9c837bb552b61add7927bd9e5f71ed6bec3",
+    "op6/results/profile-op3-combined/rank4.json": "6b2f657d682400d0efd5257b817e9f26a5f0a7df124817e40343ce6fa6f3bd49",
+    "op6/results/profile-op3-combined/rank5.json": "142805858d00d520c3b497dd964c850c851eb9dce74aa7d1d33818d517f80648",
+    "op6/results/profile-op3-combined/rank6.json": "b6d3f652811847948ca36d06654ba1ede8dc4778d6cdaeae9bdb3e4a21b5706c",
+    "op6/results/profile-op3-combined/rank7.json": "a423a5bebb4ad1793b8d4c07e4ca3127a7da89e1cc9780399935915b159b231a"
+  },
+  "saved_status_modified": false,
+  "gpu_work_rerun": false,
+  "build_binaries_revalidated": false,
+  "profile_auditor_sha256": "2c01fd1ebc1c33a2f72b97e9c8d8747f6eed749bc453159836abb867a0b37a29",
+  "limitation": "Offline numerical comparison and raw-trace path reanalysis only. No completed pair, new formal timings, binary replay or speedup is inferred."
+}

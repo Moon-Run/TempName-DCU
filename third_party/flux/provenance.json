@@ -1,0 +1,10 @@
+{
+  "repository": "https://github.com/bytedance/flux",
+  "commit": "19831ca2d820e3e782ed1d15d8b52d0898b78b26",
+  "usage": "Design and scheduling reference only; these CUDA files are not compiled by Flux-DCU",
+  "files": {
+    "LICENSE": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "docs/design.md": "04a5e74c4cc53eb6720b47a753d8bef5668d09fde9d3606ceb821e1c03a2064e",
+    "src/gemm_rs/tile_scheduler/threadblock_swizzle.hpp": "3d77d86921cb91fd14d41e0ef4ee522268e7ca0bfeafa51b83540fb109666c00"
+  }
+}

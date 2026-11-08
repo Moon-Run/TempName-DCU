@@ -1,0 +1,20 @@
+{
+  "batch": "../Load-5090/logs/5090/phase6/open-compress-int8-six-arm-v2-1x-1blocks-20261102-171639-582516",
+  "protocol": "rtx5090-open-compress-int8-six-arm-v2",
+  "host": "SL3061",
+  "hardware_collective_preflight": true,
+  "operator_ranks_validated": 48,
+  "operator_traces_reparsed": 48,
+  "model_smoke_ranks_validated": 24,
+  "full_training_profiles_or_timing": false,
+  "native_binary_verification_performed": false,
+  "original_state": {
+    "protocol": "rtx5090-open-compress-int8-six-arm-v2",
+    "status": "failed",
+    "stage": "smoke-megatron-bf16",
+    "error": "ValueError: Child exited 1; see /workspace/Load-5090/logs/5090/phase6/open-compress-int8-six-arm-v2-1x-1blocks-20261102-171639-582516/results/smoke-megatron-bf16/process.log"
+  },
+  "evidence_hashes_checked": 96,
+  "failure_cause": "Megatron model Adapter received inherited Flux-only ring_reduction=True; all 8 ranks failed before first model forward.",
+  "fix_gpu_execution_performed": false
+}
